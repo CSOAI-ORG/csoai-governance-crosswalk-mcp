@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "csoai-governance-crosswalk": {
+      "command": "python",
+      "args": ["server.py"],
+      "env": {}
+    }
+  }
+}

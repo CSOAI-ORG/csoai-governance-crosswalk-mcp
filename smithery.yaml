@@ -1,0 +1,10 @@
+name: csoai-governance-crosswalk-mcp
+description: "CSOAI Governance Crosswalk MCP — 12 global AI frameworks mapped through CSOAI's 52-article Partnership Charter. EU AI Act, NIST AI RMF, UNESCO, OECD, UK AISI, IEEE, Anthropic, OpenAI, Singapore, Asilomar, Montreal, G7/G20. Regulation-to-regulation bridging via universal CSOAI bridge layer."
+vendor: MEOK AI Labs / CSOAI
+homepage: https://meok.ai
+repository: https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp
+license: MIT
+categories: [Compliance, Governance, AI Safety]
+tags: [governance, compliance, eu-ai-act, nist, crosswalk, ai-safety, constitutional-ai, regulatory, audit, csoai]
+runtime: python
+entrypoint: server.py

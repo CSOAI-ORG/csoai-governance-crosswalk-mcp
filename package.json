@@ -1,0 +1,18 @@
+{
+  "name": "csoai-governance-crosswalk-mcp",
+  "version": "1.0.0",
+  "description": "CSOAI Governance Crosswalk MCP — 12 global AI frameworks mapped through CSOAI's 52-article Partnership Charter. Regulation-to-regulation bridging, compliance gap analysis, unified governance queries.",
+  "main": "server.py",
+  "mcp": {
+    "name": "csoai-governance-crosswalk",
+    "vendor": "MEOK AI Labs / CSOAI",
+    "homepage": "https://meok.ai",
+    "repository": "https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp",
+    "runtime": "python",
+    "tags": ["mcp", "mcp-server", "meok-ai-labs", "csoai", "governance", "compliance", "eu-ai-act", "nist", "ai-safety", "crosswalk"]
+  },
+  "keywords": ["mcp", "mcp-server", "meok-ai-labs", "csoai", "governance", "compliance", "crosswalk"],
+  "author": "MEOK AI Labs / CSOAI <nicholas@meok.ai>",
+  "license": "MIT",
+  "repository": {"type": "git", "url": "https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp"}
+}
