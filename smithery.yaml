@@ -1,10 +1,64 @@
 name: csoai-governance-crosswalk-mcp
-description: "CSOAI Governance Crosswalk MCP — 12 global AI frameworks mapped through CSOAI's 52-article Partnership Charter. EU AI Act, NIST AI RMF, UNESCO, OECD, UK AISI, IEEE, Anthropic, OpenAI, Singapore, Asilomar, Montreal, G7/G20. Regulation-to-regulation bridging via universal CSOAI bridge layer."
-vendor: MEOK AI Labs / CSOAI
-homepage: https://meok.ai
-repository: https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp
-license: MIT
-categories: [Compliance, Governance, AI Safety]
-tags: [governance, compliance, eu-ai-act, nist, crosswalk, ai-safety, constitutional-ai, regulatory, audit, csoai]
-runtime: python
-entrypoint: server.py
+description: The world's first operational Constitutional AI governance crosswalk.
+  12 major global AI frameworks mapped through the CSOAI Partnership Charter's 52
+  articles.
+version: 1.0.0
+tools:
+- name: query_crosswalk
+  description: Query the CSOAI crosswalk mapping for a specific framework.
+  parameters:
+  - name: framework
+    type: string
+    required: true
+  - name: article_or_clause
+    type: string
+    required: false
+- name: crosswalk_bridge
+  description: "Bridge two frameworks through CSOAI \u2014 the killer feature."
+  parameters:
+  - name: framework_a
+    type: string
+    required: true
+  - name: framework_b
+    type: string
+    required: true
+  - name: focus_area
+    type: string
+    required: false
+- name: compliance_gap_analysis
+  description: Identify compliance gaps across multiple frameworks.
+  parameters:
+  - name: frameworks
+    type: array
+    required: true
+  - name: organization_sector
+    type: string
+    required: false
+- name: get_unified_crosswalk
+  description: Return the CSOAI Master Unified Crosswalk showing all 12 frameworks
+    mapped together.
+  parameters: []
+- name: search_by_topic
+  description: Search across all crosswalks by topic.
+  parameters:
+  - name: topic
+    type: string
+    required: true
+- name: list_frameworks
+  description: List all supported frameworks with metadata.
+  parameters: []
+- name: generate_compliance_report
+  description: Generate a compliance requirements report for an organization.
+  parameters:
+  - name: jurisdictions
+    type: array
+    required: true
+  - name: ai_use_cases
+    type: array
+    required: true
+  - name: organization_size
+    type: string
+    required: false
+- name: get_partnership_charter
+  description: Return the CSOAI Partnership Charter information.
+  parameters: []
