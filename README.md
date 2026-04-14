@@ -79,7 +79,7 @@ python server.py
 2. **Provable Safety (Article 2)** -- Mathematical proof obligations for AI developers
 3. **Consciousness Preparedness (Article 6)** -- 14 Indicators for graduated moral patienthood
 
-**Backed by 45,000+ veterans.**
+**Backed by AI safety researchers and governance experts.**
 
 ## License
 

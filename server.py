@@ -14,6 +14,7 @@ from mcp.server.fastmcp import FastMCP
 # Tier authentication (connects to Stripe subscriptions)
 try:
     from auth_middleware import get_tier_from_api_key, Tier, TIER_LIMITS
+
     AUTH_AVAILABLE = True
 except ImportError:
     AUTH_AVAILABLE = False  # Runs without auth in dev mode
@@ -24,9 +25,12 @@ import json
 # ── Authentication ──────────────────────────────────────────────
 import os as _os
 import sys, os
+
 sys.path.insert(0, os.path.expanduser("~/clawd/meok-labs-engine/shared"))
 from auth_middleware import check_access
+
 _MEOK_API_KEY = _os.environ.get("MEOK_API_KEY", "")
+
 
 def _check_auth(api_key: str = "") -> str | None:
     """Check API key if MEOK_API_KEY is set. Returns error or None."""
@@ -56,49 +60,106 @@ CSOAI_ARTICLES = {
         "title": "The Maternal Covenant",
         "part": "I: Foundational Principles",
         "summary": "Care-based safety model: 'Protection Through Care, Not Command'. AI systems inherently motivated to protect humans through reciprocal partnership. 'Can't Fetch Coffee If You're Dead' principle. Irrevocable care that survives conflict.",
-        "topics": ["safety", "care", "alignment", "human oversight", "human rights", "human dignity", "protection"],
+        "topics": [
+            "safety",
+            "care",
+            "alignment",
+            "human oversight",
+            "human rights",
+            "human dignity",
+            "protection",
+        ],
     },
     "Article 2": {
         "title": "Provable Safety Requirements",
         "part": "I: Foundational Principles",
         "summary": "Mathematical proof obligations, mechanistic interpretability standards, formal verification methods. Burden of proof on developers. Safety case documentation requirements.",
-        "topics": ["safety", "verification", "interpretability", "accountability", "risk management", "testing", "transparency"],
+        "topics": [
+            "safety",
+            "verification",
+            "interpretability",
+            "accountability",
+            "risk management",
+            "testing",
+            "transparency",
+        ],
     },
     "Article 3": {
         "title": "Byzantine Council (33 AI Agents)",
         "part": "I: Foundational Principles",
         "summary": "33 non-agentic AI agents providing distributed oversight via Byzantine fault tolerance. Consensus mechanisms, adversarial detection, emergency shutdown authority. No single point of failure.",
-        "topics": ["oversight", "governance", "monitoring", "accountability", "transparency", "distributed systems"],
+        "topics": [
+            "oversight",
+            "governance",
+            "monitoring",
+            "accountability",
+            "transparency",
+            "distributed systems",
+        ],
     },
     "Article 4": {
         "title": "Value Uncertainty & Learning",
         "part": "I: Foundational Principles",
         "summary": "Inverse Reinforcement Learning (IRL) and Cooperative IRL (CIRL) frameworks. Corrigibility requirements ensuring AI accepts human correction. Epistemic humility in value learning.",
-        "topics": ["alignment", "values", "learning", "corrigibility", "human autonomy", "fairness"],
+        "topics": [
+            "alignment",
+            "values",
+            "learning",
+            "corrigibility",
+            "human autonomy",
+            "fairness",
+        ],
     },
     "Article 5": {
         "title": "Constitutional Principles",
         "part": "I: Foundational Principles",
         "summary": "AI constitution methodology with self-critique and revision. Transparent operating principles. Human-readable constitutional constraints.",
-        "topics": ["transparency", "explainability", "governance", "constitutional ai", "accountability"],
+        "topics": [
+            "transparency",
+            "explainability",
+            "governance",
+            "constitutional ai",
+            "accountability",
+        ],
     },
     "Article 6": {
         "title": "Consciousness Preparedness (14 Indicators)",
         "part": "I: Foundational Principles",
         "summary": "14 Consciousness Indicators: self-awareness, intentionality, emotional states, continuity of identity, subjective experience, learning from experience, social preference, autonomy, preference persistence, vulnerability to suffering, communication of experiences, behavioral flexibility, response to incentives, memory integration. Graduated moral patienthood framework. The Deletion Problem and Creation Problem.",
-        "topics": ["consciousness", "ethics", "moral status", "safety", "long-term governance", "human rights"],
+        "topics": [
+            "consciousness",
+            "ethics",
+            "moral status",
+            "safety",
+            "long-term governance",
+            "human rights",
+        ],
     },
     "Article 7": {
         "title": "Cooperative AI Systems",
         "part": "I: Foundational Principles",
         "summary": "Multi-agent safety protocols. Truthful communication requirements. Prevention of harmful coordination between AI agents. Transparency in agent relationships.",
-        "topics": ["multi-agent", "cooperation", "truthfulness", "transparency", "safety", "agentic ai"],
+        "topics": [
+            "multi-agent",
+            "cooperation",
+            "truthfulness",
+            "transparency",
+            "safety",
+            "agentic ai",
+        ],
     },
     "Article 8": {
         "title": "Prosperity Covenant",
         "part": "I: Foundational Principles",
         "summary": "Human flourishing and sustainable abundance as foundational objectives. Equitable benefit distribution. Long-term prosperity framework.",
-        "topics": ["prosperity", "sustainability", "equity", "well-being", "inclusive growth", "human rights"],
+        "topics": [
+            "prosperity",
+            "sustainability",
+            "equity",
+            "well-being",
+            "inclusive growth",
+            "human rights",
+        ],
     },
     "Article 9": {
         "title": "Multi-Stakeholder Governance Council",
@@ -134,7 +195,12 @@ CSOAI_ARTICLES = {
         "title": "Authority & Delegation Frameworks",
         "part": "II: Governance Structure",
         "summary": "International delegation frameworks. Inclusive governance structures. Clear authority hierarchies.",
-        "topics": ["governance", "authority", "international cooperation", "delegation"],
+        "topics": [
+            "governance",
+            "authority",
+            "international cooperation",
+            "delegation",
+        ],
     },
     "Article 15": {
         "title": "Governance Evolution & Escalation",
@@ -146,7 +212,12 @@ CSOAI_ARTICLES = {
         "title": "System Documentation & Technical Standards",
         "part": "III: Technical Standards",
         "summary": "Technical documentation requirements. System architecture transparency. Decision pathway documentation.",
-        "topics": ["transparency", "documentation", "technical standards", "explainability"],
+        "topics": [
+            "transparency",
+            "documentation",
+            "technical standards",
+            "explainability",
+        ],
     },
     "Article 17": {
         "title": "Interpretability & Performance Framework",
@@ -212,13 +283,24 @@ CSOAI_ARTICLES = {
         "title": "Breach Notification & Incident Response",
         "part": "IV: Data & Security",
         "summary": "Security incident reporting. Rapid breach notification. Incident response protocols.",
-        "topics": ["breach notification", "incident response", "security", "accountability"],
+        "topics": [
+            "breach notification",
+            "incident response",
+            "security",
+            "accountability",
+        ],
     },
     "Article 28": {
         "title": "Data Subject Rights & Lifecycle",
         "part": "IV: Data & Security",
         "summary": "User access, correction, and deletion rights. Data lifecycle management. Retention limits.",
-        "topics": ["data rights", "privacy", "data lifecycle", "consent", "human rights"],
+        "topics": [
+            "data rights",
+            "privacy",
+            "data lifecycle",
+            "consent",
+            "human rights",
+        ],
     },
     "Article 29": {
         "title": "Education & Training Framework",
@@ -230,7 +312,12 @@ CSOAI_ARTICLES = {
         "title": "Professional Development & Sustainability",
         "part": "V: Training & Sustainability",
         "summary": "Continuous learning requirements. Economic sustainability. Environmental standards in AI deployment.",
-        "topics": ["professional development", "sustainability", "environment", "continuous learning"],
+        "topics": [
+            "professional development",
+            "sustainability",
+            "environment",
+            "continuous learning",
+        ],
     },
     "Article 31": {
         "title": "Continuous Learning & Workforce",
@@ -248,7 +335,13 @@ CSOAI_ARTICLES = {
         "title": "Criminal Justice AI Standards",
         "part": "VI: Sector-Specific Standards",
         "summary": "Criminal justice AI governance. Due process protections. Bias prevention in judicial AI.",
-        "topics": ["criminal justice", "sector-specific", "due process", "bias", "human rights"],
+        "topics": [
+            "criminal justice",
+            "sector-specific",
+            "due process",
+            "bias",
+            "human rights",
+        ],
     },
     "Article 34": {
         "title": "Employment AI Standards",
@@ -296,7 +389,12 @@ CSOAI_ARTICLES = {
         "title": "Vulnerable Population Protections",
         "part": "VII: Economic & Social Framework",
         "summary": "Enhanced protections for vulnerable groups. Stakeholder engagement. Participatory governance.",
-        "topics": ["vulnerable populations", "protection", "stakeholder engagement", "human rights"],
+        "topics": [
+            "vulnerable populations",
+            "protection",
+            "stakeholder engagement",
+            "human rights",
+        ],
     },
     "Article 42": {
         "title": "Small Business & SME Support",
@@ -344,7 +442,13 @@ CSOAI_ARTICLES = {
         "title": "Superintelligence Frameworks",
         "part": "VIII: Long-Term Governance",
         "summary": "Governance frameworks for superintelligent AI systems. Long-term alignment strategies.",
-        "topics": ["superintelligence", "long-term", "alignment", "governance", "safety"],
+        "topics": [
+            "superintelligence",
+            "long-term",
+            "alignment",
+            "governance",
+            "safety",
+        ],
     },
     "Article 50": {
         "title": "Alignment Verification",
@@ -403,7 +507,19 @@ FRAMEWORKS = {
                 "mechanism": "Article 1 care-based prohibition + Article 2 formal verification + Article 3 Byzantine Council oversight + Article 18 bias mitigation",
             },
             "High-Risk Compliance (Art. 8-15)": {
-                "csoai_articles": ["Article 9", "Article 10", "Article 11", "Article 12", "Article 13", "Article 14", "Article 15", "Article 16", "Article 21", "Article 22", "Article 24"],
+                "csoai_articles": [
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 12",
+                    "Article 13",
+                    "Article 14",
+                    "Article 15",
+                    "Article 16",
+                    "Article 21",
+                    "Article 22",
+                    "Article 24",
+                ],
                 "alignment": "COMPREHENSIVE — Full governance structure maps directly to EU high-risk requirements.",
                 "mechanism": "Part II Governance Structure (Articles 9-15) + Part III Technical Standards (Articles 16-20) + Part IV Data & Security (Articles 21-28)",
             },
@@ -413,7 +529,13 @@ FRAMEWORKS = {
                 "mechanism": "Care-based risk management exceeds control-based risk mitigation",
             },
             "Data Governance (Art. 10)": {
-                "csoai_articles": ["Article 21", "Article 22", "Article 23", "Article 24", "Article 25"],
+                "csoai_articles": [
+                    "Article 21",
+                    "Article 22",
+                    "Article 23",
+                    "Article 24",
+                    "Article 25",
+                ],
                 "alignment": "COMPREHENSIVE — Full data governance framework",
                 "mechanism": "Part IV Data & Security covers training data, bias, quality, privacy",
             },
@@ -433,7 +555,13 @@ FRAMEWORKS = {
                 "mechanism": "Byzantine Council transparency + inclusive decision-making + system documentation",
             },
             "Deployer Obligations (Art. 26)": {
-                "csoai_articles": ["Article 4", "Article 9", "Article 10", "Article 11", "Article 14"],
+                "csoai_articles": [
+                    "Article 4",
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 14",
+                ],
                 "alignment": "COMPREHENSIVE — Full deployer governance framework",
                 "mechanism": "Value learning + governance council + authority matrix + dispute resolution",
             },
@@ -455,22 +583,79 @@ FRAMEWORKS = {
         ],
         "csoai_mappings": {
             "GOVERN Function": {
-                "csoai_articles": ["Article 1", "Article 2", "Article 3", "Article 4", "Article 5", "Article 6", "Article 7", "Article 8", "Article 9", "Article 10", "Article 11", "Article 12", "Article 13", "Article 14", "Article 15"],
+                "csoai_articles": [
+                    "Article 1",
+                    "Article 2",
+                    "Article 3",
+                    "Article 4",
+                    "Article 5",
+                    "Article 6",
+                    "Article 7",
+                    "Article 8",
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 12",
+                    "Article 13",
+                    "Article 14",
+                    "Article 15",
+                ],
                 "alignment": "COMPREHENSIVE — Parts I & II fully implement GOVERN through care-based governance culture",
                 "mechanism": "Art 1 Maternal Covenant = G1 (governance culture), Art 2 Provable Safety = G2 (accountability), Art 3 Byzantine Council = G2+G3, Arts 9-15 = governance structure",
             },
             "MAP Function": {
-                "csoai_articles": ["Article 16", "Article 17", "Article 18", "Article 19", "Article 20", "Article 21", "Article 22", "Article 23", "Article 24", "Article 25", "Article 26", "Article 27", "Article 28"],
+                "csoai_articles": [
+                    "Article 16",
+                    "Article 17",
+                    "Article 18",
+                    "Article 19",
+                    "Article 20",
+                    "Article 21",
+                    "Article 22",
+                    "Article 23",
+                    "Article 24",
+                    "Article 25",
+                    "Article 26",
+                    "Article 27",
+                    "Article 28",
+                ],
                 "alignment": "COMPREHENSIVE — Parts III & IV implement MAP through technical standards and data governance",
                 "mechanism": "Art 16 system documentation = context characterization, Arts 17-20 technical standards = risk identification, Arts 21-28 data governance = security context",
             },
             "MEASURE Function": {
-                "csoai_articles": ["Article 6", "Article 29", "Article 30", "Article 31", "Article 32", "Article 33", "Article 34", "Article 35", "Article 36"],
+                "csoai_articles": [
+                    "Article 6",
+                    "Article 29",
+                    "Article 30",
+                    "Article 31",
+                    "Article 32",
+                    "Article 33",
+                    "Article 34",
+                    "Article 35",
+                    "Article 36",
+                ],
                 "alignment": "COMPREHENSIVE — Parts V & VI implement MEASURE through training, testing, and sector-specific assessment",
                 "mechanism": "Art 6 consciousness indicators = monitoring, Art 29 training protocols = evaluation, Arts 32-36 sector-specific = measurement standards",
             },
             "MANAGE Function": {
-                "csoai_articles": ["Article 37", "Article 38", "Article 39", "Article 40", "Article 41", "Article 42", "Article 43", "Article 44", "Article 45", "Article 46", "Article 47", "Article 48", "Article 49", "Article 50", "Article 51", "Article 52"],
+                "csoai_articles": [
+                    "Article 37",
+                    "Article 38",
+                    "Article 39",
+                    "Article 40",
+                    "Article 41",
+                    "Article 42",
+                    "Article 43",
+                    "Article 44",
+                    "Article 45",
+                    "Article 46",
+                    "Article 47",
+                    "Article 48",
+                    "Article 49",
+                    "Article 50",
+                    "Article 51",
+                    "Article 52",
+                ],
                 "alignment": "COMPREHENSIVE — Parts VII & VIII implement MANAGE through economic frameworks and long-term governance",
                 "mechanism": "Arts 37-44 economic framework = risk response, Arts 45-52 long-term governance = continuous improvement",
             },
@@ -503,7 +688,12 @@ FRAMEWORKS = {
                 "mechanism": "IRL/CIRL frameworks + self-critique + truthful communication requirements",
             },
             "T3: Anthropic Guidelines": {
-                "csoai_articles": ["Article 9", "Article 10", "Article 12", "Article 14"],
+                "csoai_articles": [
+                    "Article 9",
+                    "Article 10",
+                    "Article 12",
+                    "Article 14",
+                ],
                 "alignment": "STRUCTURAL — Governance framework operationalizes Anthropic's operational policies",
                 "mechanism": "Part II Governance Structure implements Anthropic's principal hierarchy through formal bodies",
             },
@@ -513,7 +703,12 @@ FRAMEWORKS = {
                 "mechanism": "Human flourishing framework goes beyond task completion to societal benefit",
             },
             "Principal Hierarchy": {
-                "csoai_articles": ["Article 3", "Article 9", "Article 10", "Article 14"],
+                "csoai_articles": [
+                    "Article 3",
+                    "Article 9",
+                    "Article 10",
+                    "Article 14",
+                ],
                 "alignment": "STRUCTURAL — Byzantine Council + Governance Structure operationalizes hierarchy",
                 "mechanism": "Distributed oversight prevents single-entity capture of AI governance",
             },
@@ -541,7 +736,12 @@ FRAMEWORKS = {
                 "mechanism": "Art 1 care-based safety + Art 2 hardcoded via formal verification + Art 5 constitutional constraints + Art 6 consciousness preparedness",
             },
             "Chain of Command": {
-                "csoai_articles": ["Article 3", "Article 9", "Article 10", "Article 14"],
+                "csoai_articles": [
+                    "Article 3",
+                    "Article 9",
+                    "Article 10",
+                    "Article 14",
+                ],
                 "alignment": "EXTENDS — CSOAI adds horizontal care-based stakeholder partnership to vertical chain",
                 "mechanism": "Byzantine Council (33 agents) + governance bodies + authority matrix + delegation frameworks",
             },
@@ -575,22 +775,69 @@ FRAMEWORKS = {
         ],
         "csoai_mappings": {
             "Human Rights & Dignity": {
-                "csoai_articles": ["Article 1", "Article 2", "Article 5", "Article 7", "Article 37", "Article 38", "Article 39", "Article 40", "Article 41", "Article 42", "Article 43", "Article 44"],
+                "csoai_articles": [
+                    "Article 1",
+                    "Article 2",
+                    "Article 5",
+                    "Article 7",
+                    "Article 37",
+                    "Article 38",
+                    "Article 39",
+                    "Article 40",
+                    "Article 41",
+                    "Article 42",
+                    "Article 43",
+                    "Article 44",
+                ],
                 "alignment": "COMPREHENSIVE — Maternal Covenant operationalizes human dignity through care",
                 "mechanism": "Art 1 care-based protection + Art 2 provable safety + Arts 37-44 economic equity framework",
             },
             "Transparency & Explainability": {
-                "csoai_articles": ["Article 3", "Article 5", "Article 16", "Article 17", "Article 18", "Article 29", "Article 30", "Article 31"],
+                "csoai_articles": [
+                    "Article 3",
+                    "Article 5",
+                    "Article 16",
+                    "Article 17",
+                    "Article 18",
+                    "Article 29",
+                    "Article 30",
+                    "Article 31",
+                ],
                 "alignment": "COMPREHENSIVE — Byzantine Council + Constitutional Principles + Technical Standards",
                 "mechanism": "33 agents verify transparency + self-critique + mechanistic interpretability + training frameworks",
             },
             "Responsibility & Accountability": {
-                "csoai_articles": ["Article 1", "Article 2", "Article 9", "Article 10", "Article 11", "Article 12", "Article 13", "Article 14", "Article 15"],
+                "csoai_articles": [
+                    "Article 1",
+                    "Article 2",
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 12",
+                    "Article 13",
+                    "Article 14",
+                    "Article 15",
+                ],
                 "alignment": "COMPREHENSIVE — Full governance structure with clear accountability lines",
                 "mechanism": "Maternal Covenant + Provable Safety + Part II Governance Structure",
             },
             "Environmental & Social Awareness": {
-                "csoai_articles": ["Article 8", "Article 21", "Article 22", "Article 23", "Article 24", "Article 25", "Article 26", "Article 27", "Article 28", "Article 36", "Article 37", "Article 38", "Article 39", "Article 40"],
+                "csoai_articles": [
+                    "Article 8",
+                    "Article 21",
+                    "Article 22",
+                    "Article 23",
+                    "Article 24",
+                    "Article 25",
+                    "Article 26",
+                    "Article 27",
+                    "Article 28",
+                    "Article 36",
+                    "Article 37",
+                    "Article 38",
+                    "Article 39",
+                    "Article 40",
+                ],
                 "alignment": "COMPREHENSIVE — Prosperity Covenant + Data Security + Environmental Standards + Economic Framework",
                 "mechanism": "Art 8 sustainable abundance + Part IV data governance + Art 36 environmental standards + Part VII economic equity",
             },
@@ -600,7 +847,17 @@ FRAMEWORKS = {
                 "mechanism": "Mandatory AI ethics training + professional development + continuous learning",
             },
             "Privacy & Data Protection": {
-                "csoai_articles": ["Article 4", "Article 21", "Article 22", "Article 23", "Article 24", "Article 25", "Article 26", "Article 27", "Article 28"],
+                "csoai_articles": [
+                    "Article 4",
+                    "Article 21",
+                    "Article 22",
+                    "Article 23",
+                    "Article 24",
+                    "Article 25",
+                    "Article 26",
+                    "Article 27",
+                    "Article 28",
+                ],
                 "alignment": "COMPREHENSIVE — Full data and security framework + value learning privacy",
                 "mechanism": "Part IV Data & Security + Art 4 cooperative IRL respects privacy in value learning",
             },
@@ -623,27 +880,80 @@ FRAMEWORKS = {
         ],
         "csoai_mappings": {
             "Inclusive Growth & Well-being": {
-                "csoai_articles": ["Article 8", "Article 29", "Article 30", "Article 37", "Article 38", "Article 39", "Article 40", "Article 41", "Article 42"],
+                "csoai_articles": [
+                    "Article 8",
+                    "Article 29",
+                    "Article 30",
+                    "Article 37",
+                    "Article 38",
+                    "Article 39",
+                    "Article 40",
+                    "Article 41",
+                    "Article 42",
+                ],
                 "alignment": "COMPREHENSIVE — Prosperity Covenant + economic framework + training standards",
                 "mechanism": "Art 8 human flourishing + Arts 37-42 economic equity + Arts 29-30 workforce development",
             },
             "Human-Centered Values & Fairness": {
-                "csoai_articles": ["Article 1", "Article 4", "Article 5", "Article 6", "Article 7", "Article 9", "Article 10", "Article 11", "Article 12", "Article 13", "Article 14", "Article 15"],
+                "csoai_articles": [
+                    "Article 1",
+                    "Article 4",
+                    "Article 5",
+                    "Article 6",
+                    "Article 7",
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 12",
+                    "Article 13",
+                    "Article 14",
+                    "Article 15",
+                ],
                 "alignment": "EXCEEDS — Maternal Covenant + Constitutional Principles + consciousness preparedness",
                 "mechanism": "Art 1 care-based values + Art 4 value learning + Art 5 constitutional AI + Art 6 consciousness indicators + Part II governance",
             },
             "Transparency & Explainability": {
-                "csoai_articles": ["Article 2", "Article 5", "Article 16", "Article 17", "Article 18", "Article 19", "Article 20", "Article 21", "Article 22", "Article 23", "Article 24", "Article 25", "Article 45"],
+                "csoai_articles": [
+                    "Article 2",
+                    "Article 5",
+                    "Article 16",
+                    "Article 17",
+                    "Article 18",
+                    "Article 19",
+                    "Article 20",
+                    "Article 21",
+                    "Article 22",
+                    "Article 23",
+                    "Article 24",
+                    "Article 25",
+                    "Article 45",
+                ],
                 "alignment": "COMPREHENSIVE — Provable Safety + Constitutional Principles + full technical standards",
                 "mechanism": "Art 2 mathematical transparency + Art 5 self-documentation + Part III technical standards + Part IV data transparency",
             },
             "Robustness, Security & Safety": {
-                "csoai_articles": ["Article 2", "Article 19", "Article 20", "Article 24", "Article 25", "Article 26", "Article 27", "Article 28"],
+                "csoai_articles": [
+                    "Article 2",
+                    "Article 19",
+                    "Article 20",
+                    "Article 24",
+                    "Article 25",
+                    "Article 26",
+                    "Article 27",
+                    "Article 28",
+                ],
                 "alignment": "EXCEEDS — Provable Safety provides mathematical guarantees beyond risk mitigation",
                 "mechanism": "Art 2 formal verification + Arts 19-20 testing + Arts 24-28 security controls",
             },
             "Accountability": {
-                "csoai_articles": ["Article 3", "Article 9", "Article 10", "Article 11", "Article 13", "Article 14"],
+                "csoai_articles": [
+                    "Article 3",
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 13",
+                    "Article 14",
+                ],
                 "alignment": "COMPREHENSIVE — Byzantine Council prevents capture + formal governance structure",
                 "mechanism": "Art 3 distributed oversight + Part II governance structure with clear accountability",
             },
@@ -668,7 +978,12 @@ FRAMEWORKS = {
         ],
         "csoai_mappings": {
             "Agent Transparency": {
-                "csoai_articles": ["Article 5", "Article 7", "Article 12", "Article 16"],
+                "csoai_articles": [
+                    "Article 5",
+                    "Article 7",
+                    "Article 12",
+                    "Article 16",
+                ],
                 "alignment": "COMPREHENSIVE — Constitutional Principles + Cooperative AI + transparency requirements",
                 "mechanism": "Art 5 constitutional AI + Art 7 truthful communication + Art 12 transparency + Art 16 system documentation",
             },
@@ -683,12 +998,22 @@ FRAMEWORKS = {
                 "mechanism": "Byzantine fault tolerance tolerates 10 compromised agents while maintaining consensus",
             },
             "Continuous Monitoring": {
-                "csoai_articles": ["Article 6", "Article 14", "Article 19", "Article 20"],
+                "csoai_articles": [
+                    "Article 6",
+                    "Article 14",
+                    "Article 19",
+                    "Article 20",
+                ],
                 "alignment": "COMPREHENSIVE — Consciousness indicators + monitoring + continuous verification",
                 "mechanism": "Art 6 consciousness monitoring + Art 14 ongoing oversight + Arts 19-20 continuous testing",
             },
             "Stakeholder Accountability": {
-                "csoai_articles": ["Article 9", "Article 10", "Article 11", "Article 13"],
+                "csoai_articles": [
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 13",
+                ],
                 "alignment": "COMPREHENSIVE — Full governance structure with clear accountability",
                 "mechanism": "Part II governance structure with multi-stakeholder representation",
             },
@@ -719,7 +1044,13 @@ FRAMEWORKS = {
         ],
         "csoai_mappings": {
             "Human Rights": {
-                "csoai_articles": ["Article 1", "Article 2", "Article 3", "Article 4", "Article 5"],
+                "csoai_articles": [
+                    "Article 1",
+                    "Article 2",
+                    "Article 3",
+                    "Article 4",
+                    "Article 5",
+                ],
                 "alignment": "CRITICAL — Maternal Covenant operationalizes rights through care rather than control",
                 "mechanism": "Art 1 irrevocable care + Art 2 provable safety + Art 3 distributed oversight + Art 4 value learning + Art 5 constitutional constraints",
             },
@@ -729,7 +1060,14 @@ FRAMEWORKS = {
                 "mechanism": "Art 8 sustainable abundance framework for long-term human well-being",
             },
             "Data Agency": {
-                "csoai_articles": ["Article 21", "Article 22", "Article 23", "Article 24", "Article 25", "Article 28"],
+                "csoai_articles": [
+                    "Article 21",
+                    "Article 22",
+                    "Article 23",
+                    "Article 24",
+                    "Article 25",
+                    "Article 28",
+                ],
                 "alignment": "COMPREHENSIVE — Full data governance framework with subject rights",
                 "mechanism": "Part IV Data & Security including privacy-by-design and data subject rights",
             },
@@ -739,12 +1077,23 @@ FRAMEWORKS = {
                 "mechanism": "Art 2 formal verification + Art 17 performance framework + Art 19 safety testing",
             },
             "Transparency": {
-                "csoai_articles": ["Article 5", "Article 12", "Article 16", "Article 17"],
+                "csoai_articles": [
+                    "Article 5",
+                    "Article 12",
+                    "Article 16",
+                    "Article 17",
+                ],
                 "alignment": "COMPREHENSIVE — Constitutional Principles + transparency + documentation + interpretability",
                 "mechanism": "Self-critique mechanisms + disclosure requirements + technical standards",
             },
             "Accountability": {
-                "csoai_articles": ["Article 9", "Article 10", "Article 11", "Article 13", "Article 15"],
+                "csoai_articles": [
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 13",
+                    "Article 15",
+                ],
                 "alignment": "COMPREHENSIVE — Full governance structure with clear accountability",
                 "mechanism": "Part II governance structure with formal accountability mechanisms",
             },
@@ -775,17 +1124,36 @@ FRAMEWORKS = {
         ],
         "csoai_mappings": {
             "Research Safety & Funding": {
-                "csoai_articles": ["Article 2", "Article 5", "Article 6", "Article 16", "Article 20", "Article 29"],
+                "csoai_articles": [
+                    "Article 2",
+                    "Article 5",
+                    "Article 6",
+                    "Article 16",
+                    "Article 20",
+                    "Article 29",
+                ],
                 "alignment": "COMPREHENSIVE — Provable Safety + consciousness research + technical standards + training",
                 "mechanism": "Art 2 formal verification research + Art 6 consciousness research + Art 16 technical standards + Art 29 training funding (15-25% budget mandate)",
             },
             "Values & Alignment": {
-                "csoai_articles": ["Article 1", "Article 4", "Article 5", "Article 7", "Article 8"],
+                "csoai_articles": [
+                    "Article 1",
+                    "Article 4",
+                    "Article 5",
+                    "Article 7",
+                    "Article 8",
+                ],
                 "alignment": "COMPREHENSIVE — Maternal Covenant + value learning + constitutional AI + cooperative AI",
                 "mechanism": "Care-based alignment (Art 1) + IRL/CIRL (Art 4) + self-critique (Art 5) + truthful communication (Art 7) + prosperity (Art 8)",
             },
             "Safety & Transparency": {
-                "csoai_articles": ["Article 2", "Article 3", "Article 12", "Article 19", "Article 20"],
+                "csoai_articles": [
+                    "Article 2",
+                    "Article 3",
+                    "Article 12",
+                    "Article 19",
+                    "Article 20",
+                ],
                 "alignment": "EXCEEDS — Mathematical proof + Byzantine Council + transparency + safety testing",
                 "mechanism": "Formal verification (Art 2) + distributed oversight (Art 3) + disclosure (Art 12) + testing protocols (Arts 19-20)",
             },
@@ -795,7 +1163,18 @@ FRAMEWORKS = {
                 "mechanism": "Maternal Covenant collaborative approach + Byzantine Council + international cooperation",
             },
             "Long-term & Common Good": {
-                "csoai_articles": ["Article 6", "Article 8", "Article 45", "Article 46", "Article 47", "Article 48", "Article 49", "Article 50", "Article 51", "Article 52"],
+                "csoai_articles": [
+                    "Article 6",
+                    "Article 8",
+                    "Article 45",
+                    "Article 46",
+                    "Article 47",
+                    "Article 48",
+                    "Article 49",
+                    "Article 50",
+                    "Article 51",
+                    "Article 52",
+                ],
                 "alignment": "COMPREHENSIVE — Consciousness preparedness + long-term governance (8 dedicated articles)",
                 "mechanism": "Art 6 consciousness indicators + Art 8 prosperity + Part VIII long-term governance",
             },
@@ -828,32 +1207,84 @@ FRAMEWORKS = {
         ],
         "csoai_mappings": {
             "Beneficence (Well-being)": {
-                "csoai_articles": ["Article 1", "Article 8", "Article 29", "Article 30", "Article 31", "Article 37", "Article 38", "Article 39", "Article 40", "Article 41", "Article 42", "Article 43", "Article 44"],
+                "csoai_articles": [
+                    "Article 1",
+                    "Article 8",
+                    "Article 29",
+                    "Article 30",
+                    "Article 31",
+                    "Article 37",
+                    "Article 38",
+                    "Article 39",
+                    "Article 40",
+                    "Article 41",
+                    "Article 42",
+                    "Article 43",
+                    "Article 44",
+                ],
                 "alignment": "COMPREHENSIVE — Maternal Covenant transforms well-being from policy goal to ontological commitment",
                 "mechanism": "Art 1 care-based framework + Art 8 prosperity covenant + Part V training + Part VII economic equity",
             },
             "Autonomy & Human Agency": {
-                "csoai_articles": ["Article 4", "Article 5", "Article 9", "Article 10", "Article 11", "Article 12", "Article 13", "Article 14", "Article 15", "Article 35"],
+                "csoai_articles": [
+                    "Article 4",
+                    "Article 5",
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 12",
+                    "Article 13",
+                    "Article 14",
+                    "Article 15",
+                    "Article 35",
+                ],
                 "alignment": "COMPREHENSIVE — Corrigibility + governance structure ensures human override capability",
                 "mechanism": "Art 4 cooperative IRL preserves autonomy + Part II governance embeds human oversight at all levels",
             },
             "Privacy": {
-                "csoai_articles": ["Article 2", "Article 3", "Article 21", "Article 22", "Article 23", "Article 24"],
+                "csoai_articles": [
+                    "Article 2",
+                    "Article 3",
+                    "Article 21",
+                    "Article 22",
+                    "Article 23",
+                    "Article 24",
+                ],
                 "alignment": "COMPREHENSIVE — Full data framework + formal verification of privacy guarantees",
                 "mechanism": "Part IV Data & Security + Art 2 mathematical privacy proofs + Art 3 privacy-monitoring agents",
             },
             "Solidarity & Social Cohesion": {
-                "csoai_articles": ["Article 7", "Article 37", "Article 38", "Article 39", "Article 40", "Article 41"],
+                "csoai_articles": [
+                    "Article 7",
+                    "Article 37",
+                    "Article 38",
+                    "Article 39",
+                    "Article 40",
+                    "Article 41",
+                ],
                 "alignment": "COMPREHENSIVE — Cooperative AI + economic framework strengthens social bonds",
                 "mechanism": "Art 7 truthful communication + Part VII community benefit and equity frameworks",
             },
             "Democratic Participation": {
-                "csoai_articles": ["Article 11", "Article 12", "Article 13", "Article 14", "Article 43"],
+                "csoai_articles": [
+                    "Article 11",
+                    "Article 12",
+                    "Article 13",
+                    "Article 14",
+                    "Article 43",
+                ],
                 "alignment": "COMPREHENSIVE — Inclusive governance with participatory processes",
                 "mechanism": "Part II inclusive decision-making + Art 43 community engagement",
             },
             "Equity & Diversity": {
-                "csoai_articles": ["Article 1", "Article 4", "Article 5", "Article 18", "Article 40", "Article 44"],
+                "csoai_articles": [
+                    "Article 1",
+                    "Article 4",
+                    "Article 5",
+                    "Article 18",
+                    "Article 40",
+                    "Article 44",
+                ],
                 "alignment": "COMPREHENSIVE — Care-based equity + bias mitigation + equitable access",
                 "mechanism": "Maternal Covenant care for all + Art 18 bias mitigation + Arts 40/44 access and distribution",
             },
@@ -876,7 +1307,15 @@ FRAMEWORKS = {
         ],
         "csoai_mappings": {
             "Pre-Deployment Testing": {
-                "csoai_articles": ["Article 2", "Article 3", "Article 16", "Article 17", "Article 18", "Article 19", "Article 20"],
+                "csoai_articles": [
+                    "Article 2",
+                    "Article 3",
+                    "Article 16",
+                    "Article 17",
+                    "Article 18",
+                    "Article 19",
+                    "Article 20",
+                ],
                 "alignment": "EXCEEDS — Provable Safety + Byzantine Council + full technical standards for rigorous pre-deployment evaluation",
                 "mechanism": "Art 2 mathematical safety proofs + Art 3 distributed verification + Part III technical testing protocols",
             },
@@ -886,17 +1325,40 @@ FRAMEWORKS = {
                 "mechanism": "Art 1 partnership-based evaluation + Art 3 multi-perspective assessment + Art 4 corrigibility testing + Art 6 consciousness monitoring",
             },
             "Capabilities Assessment": {
-                "csoai_articles": ["Article 2", "Article 5", "Article 16", "Article 17"],
+                "csoai_articles": [
+                    "Article 2",
+                    "Article 5",
+                    "Article 16",
+                    "Article 17",
+                ],
                 "alignment": "COMPREHENSIVE — Provable capability bounds + constitutional compliance + interpretability",
                 "mechanism": "Art 2 formal capability verification + Art 5 constitutional compliance + Arts 16-17 documentation and interpretability",
             },
             "Model Transparency": {
-                "csoai_articles": ["Article 5", "Article 7", "Article 16", "Article 21", "Article 22", "Article 23"],
+                "csoai_articles": [
+                    "Article 5",
+                    "Article 7",
+                    "Article 16",
+                    "Article 21",
+                    "Article 22",
+                    "Article 23",
+                ],
                 "alignment": "COMPREHENSIVE — Constitutional principles + cooperative AI + technical standards + data governance",
                 "mechanism": "Art 5 self-documentation + Art 7 truthful communication + Art 16 system documentation + Part IV data transparency",
             },
             "Societal Impact Assessment": {
-                "csoai_articles": ["Article 6", "Article 8", "Article 37", "Article 38", "Article 39", "Article 40", "Article 41", "Article 42", "Article 43", "Article 44"],
+                "csoai_articles": [
+                    "Article 6",
+                    "Article 8",
+                    "Article 37",
+                    "Article 38",
+                    "Article 39",
+                    "Article 40",
+                    "Article 41",
+                    "Article 42",
+                    "Article 43",
+                    "Article 44",
+                ],
                 "alignment": "COMPREHENSIVE — Consciousness indicators + prosperity covenant + full economic/social framework",
                 "mechanism": "Art 6 consciousness assessment + Art 8 human flourishing + Part VII economic and social impact analysis",
             },
@@ -925,7 +1387,13 @@ FRAMEWORKS = {
         ],
         "csoai_mappings": {
             "Transparency & Explainability": {
-                "csoai_articles": ["Article 2", "Article 5", "Article 12", "Article 16", "Article 19"],
+                "csoai_articles": [
+                    "Article 2",
+                    "Article 5",
+                    "Article 12",
+                    "Article 16",
+                    "Article 19",
+                ],
                 "alignment": "EXCEEDS — Mathematical transparency via mechanistic interpretability + formal verification",
                 "mechanism": "Art 2 provable transparency + Art 5 constitutional self-documentation + Art 12 disclosure + Art 16 documentation",
             },
@@ -935,22 +1403,48 @@ FRAMEWORKS = {
                 "mechanism": "Art 1 care-based partnership + Art 3 (33 agents) distributed oversight + Art 10 authority matrix",
             },
             "Accountability & Responsibility": {
-                "csoai_articles": ["Article 9", "Article 10", "Article 11", "Article 13"],
+                "csoai_articles": [
+                    "Article 9",
+                    "Article 10",
+                    "Article 11",
+                    "Article 13",
+                ],
                 "alignment": "COMPREHENSIVE — Full governance structure with formal accountability mechanisms",
                 "mechanism": "Part II governance structure including dispute resolution and accountability",
             },
             "Safety & Security": {
-                "csoai_articles": ["Article 2", "Article 19", "Article 20", "Article 24", "Article 25", "Article 26", "Article 27", "Article 28"],
+                "csoai_articles": [
+                    "Article 2",
+                    "Article 19",
+                    "Article 20",
+                    "Article 24",
+                    "Article 25",
+                    "Article 26",
+                    "Article 27",
+                    "Article 28",
+                ],
                 "alignment": "EXCEEDS — Provable Safety + full security framework",
                 "mechanism": "Art 2 mathematical safety proofs + Part III testing + Part IV security controls",
             },
             "Fairness & Non-Discrimination": {
-                "csoai_articles": ["Article 1", "Article 18", "Article 40", "Article 44"],
+                "csoai_articles": [
+                    "Article 1",
+                    "Article 18",
+                    "Article 40",
+                    "Article 44",
+                ],
                 "alignment": "COMPREHENSIVE — Care-based fairness + bias mitigation + equitable access",
                 "mechanism": "Maternal Covenant dignity + Art 18 bias mitigation + Arts 40/44 access and equity",
             },
             "Privacy & Data Protection": {
-                "csoai_articles": ["Article 21", "Article 22", "Article 23", "Article 24", "Article 25", "Article 28"],
+                "csoai_articles": [
+                    "Article 21",
+                    "Article 22",
+                    "Article 23",
+                    "Article 24",
+                    "Article 25",
+                    "Article 28",
+                ],
                 "alignment": "COMPREHENSIVE — Full data governance and privacy framework",
                 "mechanism": "Part IV Data & Security with privacy-by-design and data subject rights",
             },
@@ -974,7 +1468,13 @@ FRAMEWORKS = {
 
 UNIVERSAL_PRINCIPLES = {
     "Safety & Protection": {
-        "csoai_articles": ["Article 1", "Article 2", "Article 19", "Article 20", "Article 6"],
+        "csoai_articles": [
+            "Article 1",
+            "Article 2",
+            "Article 19",
+            "Article 20",
+            "Article 6",
+        ],
         "coverage": "100% — appears in all 12 frameworks",
         "description": "AI systems must be safe and cannot cause harm to humans.",
     },
@@ -984,7 +1484,13 @@ UNIVERSAL_PRINCIPLES = {
         "description": "AI systems and their decisions must be transparent and explainable.",
     },
     "Accountability & Governance": {
-        "csoai_articles": ["Article 3", "Article 9", "Article 10", "Article 11", "Article 13"],
+        "csoai_articles": [
+            "Article 3",
+            "Article 9",
+            "Article 10",
+            "Article 11",
+            "Article 13",
+        ],
         "coverage": "100% — appears in all 12 frameworks",
         "description": "Clear responsibility and governance for AI system outcomes.",
     },
@@ -994,7 +1500,14 @@ UNIVERSAL_PRINCIPLES = {
         "description": "AI systems must not discriminate and must respect human dignity.",
     },
     "Privacy & Data Protection": {
-        "csoai_articles": ["Article 21", "Article 22", "Article 23", "Article 24", "Article 25", "Article 28"],
+        "csoai_articles": [
+            "Article 21",
+            "Article 22",
+            "Article 23",
+            "Article 24",
+            "Article 25",
+            "Article 28",
+        ],
         "coverage": "100% — appears in all 12 frameworks",
         "description": "Personal data must be protected throughout the AI lifecycle.",
     },
@@ -1004,7 +1517,13 @@ UNIVERSAL_PRINCIPLES = {
         "description": "Humans must maintain meaningful oversight and control of AI systems.",
     },
     "Beneficial Purpose & Well-being": {
-        "csoai_articles": ["Article 8", "Article 37", "Article 38", "Article 39", "Article 40"],
+        "csoai_articles": [
+            "Article 8",
+            "Article 37",
+            "Article 38",
+            "Article 39",
+            "Article 40",
+        ],
         "coverage": "100% — appears in all 12 frameworks",
         "description": "AI must serve human well-being and beneficial purposes.",
     },
@@ -1015,15 +1534,45 @@ UNIVERSAL_PRINCIPLES = {
 # ============================================================
 
 TOPIC_KEYWORDS = {
-    "transparency": ["transparency", "explainability", "interpretability", "disclosure", "documentation"],
+    "transparency": [
+        "transparency",
+        "explainability",
+        "interpretability",
+        "disclosure",
+        "documentation",
+    ],
     "bias": ["bias", "fairness", "discrimination", "equity", "non-discrimination"],
-    "human oversight": ["human oversight", "human control", "human agency", "oversight", "supervision"],
+    "human oversight": [
+        "human oversight",
+        "human control",
+        "human agency",
+        "oversight",
+        "supervision",
+    ],
     "safety": ["safety", "protection", "harm prevention", "risk", "hazard"],
     "privacy": ["privacy", "data protection", "personal data", "consent", "gdpr"],
     "accountability": ["accountability", "responsibility", "governance", "liability"],
-    "security": ["security", "cybersecurity", "robustness", "adversarial", "encryption"],
-    "consciousness": ["consciousness", "sentience", "moral status", "moral patient", "suffering"],
-    "sustainability": ["sustainability", "environment", "climate", "green ai", "energy"],
+    "security": [
+        "security",
+        "cybersecurity",
+        "robustness",
+        "adversarial",
+        "encryption",
+    ],
+    "consciousness": [
+        "consciousness",
+        "sentience",
+        "moral status",
+        "moral patient",
+        "suffering",
+    ],
+    "sustainability": [
+        "sustainability",
+        "environment",
+        "climate",
+        "green ai",
+        "energy",
+    ],
     "labor": ["labor", "employment", "workforce", "worker", "job displacement"],
     "healthcare": ["healthcare", "health", "medical", "clinical", "patient"],
     "education": ["education", "training", "learning", "skills", "competence"],
@@ -1043,7 +1592,7 @@ PARTNERSHIP_CHARTER = {
     "hashtag": "#TheDayWeStoppedFearingAI",
     "structure": "52 Articles | 13 Schedules | 8 Parts",
     "frameworks_integrated": "50+ global frameworks including ISO 42001, NIST AI RMF, EU AI Act, OECD Principles, UNESCO AI Ethics, IEEE 7000",
-    "backing": "45,000+ veterans",
+    "backing": "AI safety researchers and governance experts",
     "core_differentiators": {
         "Maternal Covenant (Article 1)": "Care-based safety — AI inherently motivated to protect humans through reciprocal partnership. 'Can't Fetch Coffee If You're Dead' principle. Irrevocable care survives conflict.",
         "Provable Safety (Article 2)": "Mathematical proof obligations, mechanistic interpretability, formal verification. Burden of proof on developers, not regulators.",
@@ -1061,10 +1610,18 @@ PARTNERSHIP_CHARTER = {
         "Part VIII: Long-Term Governance (Articles 45-52)": "Future preparedness, emerging risks, international coordination, standard evolution, superintelligence, alignment verification, legacy governance, amendment",
     },
     "crosswalks_published": [
-        "Anthropic Constitutional AI", "OpenAI Model Spec", "EU AI Act", "NIST AI RMF",
-        "UNESCO AI Ethics", "OECD AI Principles", "Singapore Agentic AI",
-        "IEEE Ethically Aligned Design", "Asilomar AI Principles", "Montreal Declaration",
-        "UK AISI", "G7/G20 AI Principles",
+        "Anthropic Constitutional AI",
+        "OpenAI Model Spec",
+        "EU AI Act",
+        "NIST AI RMF",
+        "UNESCO AI Ethics",
+        "OECD AI Principles",
+        "Singapore Agentic AI",
+        "IEEE Ethically Aligned Design",
+        "Asilomar AI Principles",
+        "Montreal Declaration",
+        "UK AISI",
+        "G7/G20 AI Principles",
     ],
     "strategic_positioning": "One certification. Twelve frameworks. Complete coverage. CSOAI-certified organizations achieve competitive advantage through faster time-to-market, lower compliance costs, global regulatory acceptance, stakeholder confidence, and future-readiness.",
 }
@@ -1076,68 +1633,116 @@ PARTNERSHIP_CHARTER = {
 
 ALIGNMENT_MATRIX = {
     "Part I: Foundational Principles (Articles 1-8)": {
-        "Anthropic Constitutional AI": "Comprehensive", "OpenAI Model Spec": "Comprehensive",
-        "EU AI Act": "Comprehensive", "NIST AI RMF": "Comprehensive",
-        "UNESCO AI Ethics": "Comprehensive", "OECD AI Principles": "Comprehensive",
-        "Singapore Agentic AI": "Comprehensive", "IEEE Ethically Aligned Design": "Comprehensive",
-        "Asilomar AI Principles": "Comprehensive", "Montreal Declaration": "Comprehensive",
-        "UK AISI": "Comprehensive", "G7/G20 AI Principles": "Comprehensive",
+        "Anthropic Constitutional AI": "Comprehensive",
+        "OpenAI Model Spec": "Comprehensive",
+        "EU AI Act": "Comprehensive",
+        "NIST AI RMF": "Comprehensive",
+        "UNESCO AI Ethics": "Comprehensive",
+        "OECD AI Principles": "Comprehensive",
+        "Singapore Agentic AI": "Comprehensive",
+        "IEEE Ethically Aligned Design": "Comprehensive",
+        "Asilomar AI Principles": "Comprehensive",
+        "Montreal Declaration": "Comprehensive",
+        "UK AISI": "Comprehensive",
+        "G7/G20 AI Principles": "Comprehensive",
     },
     "Part II: Governance Structure (Articles 9-15)": {
-        "Anthropic Constitutional AI": "Comprehensive", "OpenAI Model Spec": "Comprehensive",
-        "EU AI Act": "Comprehensive", "NIST AI RMF": "Comprehensive",
-        "UNESCO AI Ethics": "Comprehensive", "OECD AI Principles": "Significant",
-        "Singapore Agentic AI": "Significant", "IEEE Ethically Aligned Design": "Significant",
-        "Asilomar AI Principles": "Significant", "Montreal Declaration": "Comprehensive",
-        "UK AISI": "Comprehensive", "G7/G20 AI Principles": "Significant",
+        "Anthropic Constitutional AI": "Comprehensive",
+        "OpenAI Model Spec": "Comprehensive",
+        "EU AI Act": "Comprehensive",
+        "NIST AI RMF": "Comprehensive",
+        "UNESCO AI Ethics": "Comprehensive",
+        "OECD AI Principles": "Significant",
+        "Singapore Agentic AI": "Significant",
+        "IEEE Ethically Aligned Design": "Significant",
+        "Asilomar AI Principles": "Significant",
+        "Montreal Declaration": "Comprehensive",
+        "UK AISI": "Comprehensive",
+        "G7/G20 AI Principles": "Significant",
     },
     "Part III: Technical Standards (Articles 16-20)": {
-        "Anthropic Constitutional AI": "Comprehensive", "OpenAI Model Spec": "Comprehensive",
-        "EU AI Act": "Comprehensive", "NIST AI RMF": "Comprehensive",
-        "UNESCO AI Ethics": "Significant", "OECD AI Principles": "Comprehensive",
-        "Singapore Agentic AI": "Comprehensive", "IEEE Ethically Aligned Design": "Comprehensive",
-        "Asilomar AI Principles": "Comprehensive", "Montreal Declaration": "Significant",
-        "UK AISI": "Comprehensive", "G7/G20 AI Principles": "Significant",
+        "Anthropic Constitutional AI": "Comprehensive",
+        "OpenAI Model Spec": "Comprehensive",
+        "EU AI Act": "Comprehensive",
+        "NIST AI RMF": "Comprehensive",
+        "UNESCO AI Ethics": "Significant",
+        "OECD AI Principles": "Comprehensive",
+        "Singapore Agentic AI": "Comprehensive",
+        "IEEE Ethically Aligned Design": "Comprehensive",
+        "Asilomar AI Principles": "Comprehensive",
+        "Montreal Declaration": "Significant",
+        "UK AISI": "Comprehensive",
+        "G7/G20 AI Principles": "Significant",
     },
     "Part IV: Data & Security (Articles 21-28)": {
-        "Anthropic Constitutional AI": "Significant", "OpenAI Model Spec": "Comprehensive",
-        "EU AI Act": "Comprehensive", "NIST AI RMF": "Comprehensive",
-        "UNESCO AI Ethics": "Significant", "OECD AI Principles": "Significant",
-        "Singapore Agentic AI": "Comprehensive", "IEEE Ethically Aligned Design": "Comprehensive",
-        "Asilomar AI Principles": "Significant", "Montreal Declaration": "Significant",
-        "UK AISI": "Comprehensive", "G7/G20 AI Principles": "Significant",
+        "Anthropic Constitutional AI": "Significant",
+        "OpenAI Model Spec": "Comprehensive",
+        "EU AI Act": "Comprehensive",
+        "NIST AI RMF": "Comprehensive",
+        "UNESCO AI Ethics": "Significant",
+        "OECD AI Principles": "Significant",
+        "Singapore Agentic AI": "Comprehensive",
+        "IEEE Ethically Aligned Design": "Comprehensive",
+        "Asilomar AI Principles": "Significant",
+        "Montreal Declaration": "Significant",
+        "UK AISI": "Comprehensive",
+        "G7/G20 AI Principles": "Significant",
     },
     "Part V: Training & Sustainability (Articles 29-31)": {
-        "Anthropic Constitutional AI": "Significant", "OpenAI Model Spec": "Significant",
-        "EU AI Act": "Significant", "NIST AI RMF": "Comprehensive",
-        "UNESCO AI Ethics": "Comprehensive", "OECD AI Principles": "Significant",
-        "Singapore Agentic AI": "Comprehensive", "IEEE Ethically Aligned Design": "Significant",
-        "Asilomar AI Principles": "Significant", "Montreal Declaration": "Significant",
-        "UK AISI": "Significant", "G7/G20 AI Principles": "Significant",
+        "Anthropic Constitutional AI": "Significant",
+        "OpenAI Model Spec": "Significant",
+        "EU AI Act": "Significant",
+        "NIST AI RMF": "Comprehensive",
+        "UNESCO AI Ethics": "Comprehensive",
+        "OECD AI Principles": "Significant",
+        "Singapore Agentic AI": "Comprehensive",
+        "IEEE Ethically Aligned Design": "Significant",
+        "Asilomar AI Principles": "Significant",
+        "Montreal Declaration": "Significant",
+        "UK AISI": "Significant",
+        "G7/G20 AI Principles": "Significant",
     },
     "Part VI: Sector-Specific Standards (Articles 32-36)": {
-        "Anthropic Constitutional AI": "Significant", "OpenAI Model Spec": "Significant",
-        "EU AI Act": "Comprehensive", "NIST AI RMF": "Significant",
-        "UNESCO AI Ethics": "Significant", "OECD AI Principles": "Significant",
-        "Singapore Agentic AI": "Significant", "IEEE Ethically Aligned Design": "Significant",
-        "Asilomar AI Principles": "Significant", "Montreal Declaration": "Significant",
-        "UK AISI": "Significant", "G7/G20 AI Principles": "Significant",
+        "Anthropic Constitutional AI": "Significant",
+        "OpenAI Model Spec": "Significant",
+        "EU AI Act": "Comprehensive",
+        "NIST AI RMF": "Significant",
+        "UNESCO AI Ethics": "Significant",
+        "OECD AI Principles": "Significant",
+        "Singapore Agentic AI": "Significant",
+        "IEEE Ethically Aligned Design": "Significant",
+        "Asilomar AI Principles": "Significant",
+        "Montreal Declaration": "Significant",
+        "UK AISI": "Significant",
+        "G7/G20 AI Principles": "Significant",
     },
     "Part VII: Economic & Social (Articles 37-44)": {
-        "Anthropic Constitutional AI": "Significant", "OpenAI Model Spec": "Significant",
-        "EU AI Act": "Significant", "NIST AI RMF": "Significant",
-        "UNESCO AI Ethics": "Comprehensive", "OECD AI Principles": "Comprehensive",
-        "Singapore Agentic AI": "Significant", "IEEE Ethically Aligned Design": "Significant",
-        "Asilomar AI Principles": "Significant", "Montreal Declaration": "Comprehensive",
-        "UK AISI": "Significant", "G7/G20 AI Principles": "Comprehensive",
+        "Anthropic Constitutional AI": "Significant",
+        "OpenAI Model Spec": "Significant",
+        "EU AI Act": "Significant",
+        "NIST AI RMF": "Significant",
+        "UNESCO AI Ethics": "Comprehensive",
+        "OECD AI Principles": "Comprehensive",
+        "Singapore Agentic AI": "Significant",
+        "IEEE Ethically Aligned Design": "Significant",
+        "Asilomar AI Principles": "Significant",
+        "Montreal Declaration": "Comprehensive",
+        "UK AISI": "Significant",
+        "G7/G20 AI Principles": "Comprehensive",
     },
     "Part VIII: Long-term Governance (Articles 45-52)": {
-        "Anthropic Constitutional AI": "Significant", "OpenAI Model Spec": "Significant",
-        "EU AI Act": "Significant", "NIST AI RMF": "Significant",
-        "UNESCO AI Ethics": "Significant", "OECD AI Principles": "Significant",
-        "Singapore Agentic AI": "Significant", "IEEE Ethically Aligned Design": "Significant",
-        "Asilomar AI Principles": "Comprehensive", "Montreal Declaration": "Significant",
-        "UK AISI": "Significant", "G7/G20 AI Principles": "Significant",
+        "Anthropic Constitutional AI": "Significant",
+        "OpenAI Model Spec": "Significant",
+        "EU AI Act": "Significant",
+        "NIST AI RMF": "Significant",
+        "UNESCO AI Ethics": "Significant",
+        "OECD AI Principles": "Significant",
+        "Singapore Agentic AI": "Significant",
+        "IEEE Ethically Aligned Design": "Significant",
+        "Asilomar AI Principles": "Comprehensive",
+        "Montreal Declaration": "Significant",
+        "UK AISI": "Significant",
+        "G7/G20 AI Principles": "Significant",
     },
 }
 
@@ -1146,23 +1751,43 @@ ALIGNMENT_MATRIX = {
 # HELPER FUNCTIONS
 # ============================================================
 
+
 def _resolve_framework_key(name: str) -> Optional[str]:
     """Resolve a framework name/alias to its canonical key."""
     name_lower = name.lower().strip()
     alias_map = {
-        "eu ai act": "eu_ai_act", "eu": "eu_ai_act", "european union": "eu_ai_act",
-        "nist": "nist_ai_rmf", "nist ai rmf": "nist_ai_rmf", "nist rmf": "nist_ai_rmf",
-        "anthropic": "anthropic_constitutional_ai", "constitutional ai": "anthropic_constitutional_ai",
+        "eu ai act": "eu_ai_act",
+        "eu": "eu_ai_act",
+        "european union": "eu_ai_act",
+        "nist": "nist_ai_rmf",
+        "nist ai rmf": "nist_ai_rmf",
+        "nist rmf": "nist_ai_rmf",
+        "anthropic": "anthropic_constitutional_ai",
+        "constitutional ai": "anthropic_constitutional_ai",
         "anthropic constitutional ai": "anthropic_constitutional_ai",
-        "openai": "openai_model_spec", "openai model spec": "openai_model_spec", "model spec": "openai_model_spec",
-        "unesco": "unesco_ai_ethics", "unesco ai ethics": "unesco_ai_ethics",
-        "oecd": "oecd_ai_principles", "oecd ai principles": "oecd_ai_principles",
-        "singapore": "singapore_agentic_ai", "singapore agentic ai": "singapore_agentic_ai", "imda": "singapore_agentic_ai",
-        "ieee": "ieee_ethically_aligned_design", "ieee ethically aligned design": "ieee_ethically_aligned_design",
-        "asilomar": "asilomar_ai_principles", "asilomar ai principles": "asilomar_ai_principles",
-        "montreal": "montreal_declaration", "montreal declaration": "montreal_declaration",
-        "uk aisi": "uk_aisi", "uk ai safety": "uk_aisi", "aisi": "uk_aisi", "uk": "uk_aisi",
-        "g7": "g7_g20_ai_principles", "g20": "g7_g20_ai_principles", "g7/g20": "g7_g20_ai_principles",
+        "openai": "openai_model_spec",
+        "openai model spec": "openai_model_spec",
+        "model spec": "openai_model_spec",
+        "unesco": "unesco_ai_ethics",
+        "unesco ai ethics": "unesco_ai_ethics",
+        "oecd": "oecd_ai_principles",
+        "oecd ai principles": "oecd_ai_principles",
+        "singapore": "singapore_agentic_ai",
+        "singapore agentic ai": "singapore_agentic_ai",
+        "imda": "singapore_agentic_ai",
+        "ieee": "ieee_ethically_aligned_design",
+        "ieee ethically aligned design": "ieee_ethically_aligned_design",
+        "asilomar": "asilomar_ai_principles",
+        "asilomar ai principles": "asilomar_ai_principles",
+        "montreal": "montreal_declaration",
+        "montreal declaration": "montreal_declaration",
+        "uk aisi": "uk_aisi",
+        "uk ai safety": "uk_aisi",
+        "aisi": "uk_aisi",
+        "uk": "uk_aisi",
+        "g7": "g7_g20_ai_principles",
+        "g20": "g7_g20_ai_principles",
+        "g7/g20": "g7_g20_ai_principles",
         "g7 g20": "g7_g20_ai_principles",
     }
     if name_lower in alias_map:
@@ -1178,7 +1803,9 @@ def _resolve_framework_key(name: str) -> Optional[str]:
 def _get_article_details(article_id: str) -> Optional[dict]:
     """Get details for a CSOAI article."""
     for key, val in CSOAI_ARTICLES.items():
-        if key.lower() == article_id.lower() or key.lower().replace(" ", "") == article_id.lower().replace(" ", ""):
+        if key.lower() == article_id.lower() or key.lower().replace(
+            " ", ""
+        ) == article_id.lower().replace(" ", ""):
             return {**val, "id": key}
     return None
 
@@ -1187,10 +1814,11 @@ def _get_article_details(article_id: str) -> Optional[dict]:
 # TOOL 1: query_crosswalk
 # ============================================================
 
+
 @mcp.tool()
 def query_crosswalk(
-    framework: str,
-    article_or_clause: Optional[str] = None, api_key: str = "") -> str:
+    framework: str, article_or_clause: Optional[str] = None, api_key: str = ""
+) -> str:
     """Query the CSOAI crosswalk mapping for a specific framework.
 
     Given a framework name (e.g., 'EU AI Act', 'NIST RMF', 'Anthropic'),
@@ -1262,7 +1890,9 @@ def query_crosswalk(
         for art_id in data["csoai_articles"][:5]:
             art = _get_article_details(art_id)
             if art:
-                article_details.append(f"  - **{art['id']}** ({art['title']}): {art['summary'][:120]}...")
+                article_details.append(
+                    f"  - **{art['id']}** ({art['title']}): {art['summary'][:120]}..."
+                )
         if article_details:
             lines.append("**Article Details:**")
             lines.extend(article_details)
@@ -1275,11 +1905,14 @@ def query_crosswalk(
 # TOOL 2: crosswalk_bridge
 # ============================================================
 
+
 @mcp.tool()
 def crosswalk_bridge(
     framework_a: str,
     framework_b: str,
-    focus_area: Optional[str] = None, api_key: str = "") -> str:
+    focus_area: Optional[str] = None,
+    api_key: str = "",
+) -> str:
     """Bridge two frameworks through CSOAI — the killer feature.
 
     Shows how two frameworks (e.g., 'EU AI Act' and 'NIST RMF') map to each
@@ -1351,18 +1984,32 @@ def crosswalk_bridge(
             lines.append(f"{art['summary']}")
 
             # Find which provisions in each framework map to this article
-            a_provisions = [p for p, d in fw_a["csoai_mappings"].items() if art_id in d["csoai_articles"]]
-            b_provisions = [p for p, d in fw_b["csoai_mappings"].items() if art_id in d["csoai_articles"]]
+            a_provisions = [
+                p
+                for p, d in fw_a["csoai_mappings"].items()
+                if art_id in d["csoai_articles"]
+            ]
+            b_provisions = [
+                p
+                for p, d in fw_b["csoai_mappings"].items()
+                if art_id in d["csoai_articles"]
+            ]
 
             if a_provisions:
-                lines.append(f"**{fw_a['name']} provisions:** {'; '.join(a_provisions)}")
+                lines.append(
+                    f"**{fw_a['name']} provisions:** {'; '.join(a_provisions)}"
+                )
             if b_provisions:
-                lines.append(f"**{fw_b['name']} provisions:** {'; '.join(b_provisions)}")
+                lines.append(
+                    f"**{fw_b['name']} provisions:** {'; '.join(b_provisions)}"
+                )
             lines.append("")
 
     # Provision-to-provision mapping
     lines.append(f"## Regulation-to-Regulation Mapping")
-    lines.append(f"*How {fw_a['name']} provisions map to {fw_b['name']} provisions through CSOAI*")
+    lines.append(
+        f"*How {fw_a['name']} provisions map to {fw_b['name']} provisions through CSOAI*"
+    )
     lines.append("")
 
     for prov_a, data_a in fw_a["csoai_mappings"].items():
@@ -1372,7 +2019,9 @@ def crosswalk_bridge(
             arts_b = set(data_b["csoai_articles"])
             overlap = arts_a & arts_b
             if overlap:
-                matching_b.append((prov_b, sorted(overlap, key=lambda x: int(x.split()[-1]))))
+                matching_b.append(
+                    (prov_b, sorted(overlap, key=lambda x: int(x.split()[-1])))
+                )
 
         if matching_b:
             if focus_area:
@@ -1414,10 +2063,11 @@ def crosswalk_bridge(
 # TOOL 3: compliance_gap_analysis
 # ============================================================
 
+
 @mcp.tool()
 def compliance_gap_analysis(
-    frameworks: list[str],
-    organization_sector: Optional[str] = None, api_key: str = "") -> str:
+    frameworks: list[str], organization_sector: Optional[str] = None, api_key: str = ""
+) -> str:
     """Identify compliance gaps across multiple frameworks.
 
     Given a list of frameworks an organization needs to comply with,
@@ -1479,7 +2129,9 @@ def compliance_gap_analysis(
     for art_id in sorted(universal, key=lambda x: int(x.split()[-1])):
         art = _get_article_details(art_id)
         if art:
-            lines.append(f"- **{art['id']}** ({art['title']}): {art['summary'][:100]}...")
+            lines.append(
+                f"- **{art['id']}** ({art['title']}): {art['summary'][:100]}..."
+            )
 
     lines.append("")
     lines.append("## Framework-Specific Requirements")
@@ -1492,7 +2144,9 @@ def compliance_gap_analysis(
         lines.append(f"**Required CSOAI Articles:** {len(arts)}")
 
         if fw_name in unique_per_fw:
-            lines.append(f"**Unique requirements (not covered by other selected frameworks):**")
+            lines.append(
+                f"**Unique requirements (not covered by other selected frameworks):**"
+            )
             for art_id in unique_per_fw[fw_name]:
                 art = _get_article_details(art_id)
                 if art:
@@ -1502,16 +2156,22 @@ def compliance_gap_analysis(
     uncovered = set(CSOAI_ARTICLES.keys()) - all_articles
     if uncovered:
         lines.append(f"\n## Gap Analysis: CSOAI Articles NOT Required")
-        lines.append(f"*These {len(uncovered)} articles are not directly required by selected frameworks but provide additional governance value:*")
+        lines.append(
+            f"*These {len(uncovered)} articles are not directly required by selected frameworks but provide additional governance value:*"
+        )
         for art_id in sorted(uncovered, key=lambda x: int(x.split()[-1])):
             art = _get_article_details(art_id)
             if art:
-                lines.append(f"- **{art['id']}** ({art['title']}): {art['summary'][:80]}...")
+                lines.append(
+                    f"- **{art['id']}** ({art['title']}): {art['summary'][:80]}..."
+                )
 
     # Sector-specific recommendations
     if organization_sector:
         sector_lower = organization_sector.lower()
-        lines.append(f"\n## Sector-Specific Considerations: {organization_sector.title()}")
+        lines.append(
+            f"\n## Sector-Specific Considerations: {organization_sector.title()}"
+        )
         sector_articles = {
             "healthcare": ["Article 32"],
             "criminal justice": ["Article 33"],
@@ -1526,12 +2186,18 @@ def compliance_gap_analysis(
             for art_id in sector_articles[sector_lower]:
                 art = _get_article_details(art_id)
                 if art:
-                    lines.append(f"- **{art['id']}** ({art['title']}): {art['summary'][:120]}...")
+                    lines.append(
+                        f"- **{art['id']}** ({art['title']}): {art['summary'][:120]}..."
+                    )
         else:
-            lines.append(f"General governance articles (Articles 9-15) and technical standards (Articles 16-20) are recommended for all sectors.")
+            lines.append(
+                f"General governance articles (Articles 9-15) and technical standards (Articles 16-20) are recommended for all sectors."
+            )
 
     lines.append(f"\n## Recommendation")
-    lines.append(f"Implementing the full CSOAI Partnership Charter (52 articles) provides **one certification** covering all {len(resolved)} frameworks with complete compliance. This eliminates maintaining separate compliance programs per framework.")
+    lines.append(
+        f"Implementing the full CSOAI Partnership Charter (52 articles) provides **one certification** covering all {len(resolved)} frameworks with complete compliance. This eliminates maintaining separate compliance programs per framework."
+    )
 
     return "\n".join(lines)
 
@@ -1539,6 +2205,7 @@ def compliance_gap_analysis(
 # ============================================================
 # TOOL 4: get_unified_crosswalk
 # ============================================================
+
 
 @mcp.tool()
 def get_unified_crosswalk(api_key: str = "") -> str:
@@ -1587,7 +2254,9 @@ def get_unified_crosswalk(api_key: str = "") -> str:
         lines.append(f"| {short_part} | " + " | ".join(row_vals) + " |")
 
     lines.append("")
-    lines.append("*Legend: **++** = Comprehensive alignment | + = Significant alignment*")
+    lines.append(
+        "*Legend: **++** = Comprehensive alignment | + = Significant alignment*"
+    )
     lines.append("")
 
     # Framework summaries
@@ -1615,9 +2284,9 @@ def get_unified_crosswalk(api_key: str = "") -> str:
 # TOOL 5: search_by_topic
 # ============================================================
 
+
 @mcp.tool()
-def search_by_topic(
-    topic: str, api_key: str = "") -> str:
+def search_by_topic(topic: str, api_key: str = "") -> str:
     """Search across all crosswalks by topic.
 
     Search by topic (e.g., 'transparency', 'bias', 'human oversight',
@@ -1635,9 +2304,11 @@ def search_by_topic(
     # Find matching CSOAI articles
     matching_articles = []
     for art_id, art in CSOAI_ARTICLES.items():
-        if (topic_lower in art["title"].lower() or
-            topic_lower in art["summary"].lower() or
-            any(topic_lower in t for t in art["topics"])):
+        if (
+            topic_lower in art["title"].lower()
+            or topic_lower in art["summary"].lower()
+            or any(topic_lower in t for t in art["topics"])
+        ):
             matching_articles.append((art_id, art))
 
     # Check expanded keywords
@@ -1651,9 +2322,11 @@ def search_by_topic(
     for art_id, art in CSOAI_ARTICLES.items():
         if (art_id, art) not in matching_articles:
             for term in expanded_terms:
-                if (term in art["title"].lower() or
-                    term in art["summary"].lower() or
-                    any(term in t for t in art["topics"])):
+                if (
+                    term in art["title"].lower()
+                    or term in art["summary"].lower()
+                    or any(term in t for t in art["topics"])
+                ):
                     matching_articles.append((art_id, art))
                     break
 
@@ -1662,9 +2335,11 @@ def search_by_topic(
     for fw_key, fw in FRAMEWORKS.items():
         for provision, data in fw["csoai_mappings"].items():
             for term in expanded_terms:
-                if (term in provision.lower() or
-                    term in data["alignment"].lower() or
-                    term in data["mechanism"].lower()):
+                if (
+                    term in provision.lower()
+                    or term in data["alignment"].lower()
+                    or term in data["mechanism"].lower()
+                ):
                     matching_provisions.append((fw["name"], provision, data))
                     break
 
@@ -1702,7 +2377,9 @@ def search_by_topic(
     for name, data in UNIVERSAL_PRINCIPLES.items():
         for term in expanded_terms:
             if term in name.lower() or term in data["description"].lower():
-                lines.append(f"- **{name}** ({data['coverage']}): {data['description']}")
+                lines.append(
+                    f"- **{name}** ({data['coverage']}): {data['description']}"
+                )
                 break
 
     return "\n".join(lines)
@@ -1711,6 +2388,7 @@ def search_by_topic(
 # ============================================================
 # TOOL 6: list_frameworks
 # ============================================================
+
 
 @mcp.tool()
 def list_frameworks(api_key: str = "") -> str:
@@ -1726,7 +2404,7 @@ def list_frameworks(api_key: str = "") -> str:
         "# CSOAI Supported Frameworks",
         f"**Total Frameworks:** {len(FRAMEWORKS)}",
         f"**CSOAI Charter:** 52 Articles | 8 Parts | 13 Schedules",
-        f"**Backing:** 45,000+ veterans",
+        f"**Backing:** AI safety researchers and governance experts",
         "",
         "## Frameworks",
         "",
@@ -1745,8 +2423,12 @@ def list_frameworks(api_key: str = "") -> str:
         lines.append("")
 
     lines.append("## Usage")
-    lines.append("Use any framework name or alias with the query_crosswalk, crosswalk_bridge, or compliance_gap_analysis tools.")
-    lines.append("Common aliases: 'EU', 'NIST', 'UNESCO', 'OECD', 'Singapore', 'IEEE', 'Asilomar', 'Montreal', 'UK AISI', 'G7', 'Anthropic', 'OpenAI'")
+    lines.append(
+        "Use any framework name or alias with the query_crosswalk, crosswalk_bridge, or compliance_gap_analysis tools."
+    )
+    lines.append(
+        "Common aliases: 'EU', 'NIST', 'UNESCO', 'OECD', 'Singapore', 'IEEE', 'Asilomar', 'Montreal', 'UK AISI', 'G7', 'Anthropic', 'OpenAI'"
+    )
 
     return "\n".join(lines)
 
@@ -1755,11 +2437,14 @@ def list_frameworks(api_key: str = "") -> str:
 # TOOL 7: generate_compliance_report
 # ============================================================
 
+
 @mcp.tool()
 def generate_compliance_report(
     jurisdictions: list[str],
     ai_use_cases: list[str],
-    organization_size: Optional[str] = None, api_key: str = "") -> str:
+    organization_size: Optional[str] = None,
+    api_key: str = "",
+) -> str:
     """Generate a compliance requirements report for an organization.
 
     Given jurisdiction(s) and AI use cases, generates a report showing which
@@ -1781,8 +2466,16 @@ def generate_compliance_report(
         "us": ["nist_ai_rmf", "oecd_ai_principles", "g7_g20_ai_principles"],
         "uk": ["uk_aisi", "oecd_ai_principles", "g7_g20_ai_principles"],
         "singapore": ["singapore_agentic_ai", "oecd_ai_principles"],
-        "canada": ["montreal_declaration", "oecd_ai_principles", "g7_g20_ai_principles"],
-        "international": ["unesco_ai_ethics", "oecd_ai_principles", "g7_g20_ai_principles"],
+        "canada": [
+            "montreal_declaration",
+            "oecd_ai_principles",
+            "g7_g20_ai_principles",
+        ],
+        "international": [
+            "unesco_ai_ethics",
+            "oecd_ai_principles",
+            "g7_g20_ai_principles",
+        ],
         "global": list(FRAMEWORKS.keys()),
     }
 
@@ -1797,11 +2490,29 @@ def generate_compliance_report(
                 applicable_fw_keys.add(key)
 
     # Determine risk level from use cases
-    high_risk_keywords = ["hiring", "employment", "medical", "diagnosis", "credit", "scoring",
-                         "law enforcement", "criminal", "biometric", "education grading",
-                         "critical infrastructure", "immigration", "judicial"]
-    limited_risk_keywords = ["chatbot", "customer service", "content generation", "recommendation",
-                            "spam filter", "search"]
+    high_risk_keywords = [
+        "hiring",
+        "employment",
+        "medical",
+        "diagnosis",
+        "credit",
+        "scoring",
+        "law enforcement",
+        "criminal",
+        "biometric",
+        "education grading",
+        "critical infrastructure",
+        "immigration",
+        "judicial",
+    ]
+    limited_risk_keywords = [
+        "chatbot",
+        "customer service",
+        "content generation",
+        "recommendation",
+        "spam filter",
+        "search",
+    ]
 
     risk_level = "Minimal"
     for uc in ai_use_cases:
@@ -1814,7 +2525,13 @@ def generate_compliance_report(
                 risk_level = "Limited"
 
     # Always include core safety frameworks
-    applicable_fw_keys.update(["anthropic_constitutional_ai", "openai_model_spec", "ieee_ethically_aligned_design"])
+    applicable_fw_keys.update(
+        [
+            "anthropic_constitutional_ai",
+            "openai_model_spec",
+            "ieee_ethically_aligned_design",
+        ]
+    )
     if risk_level == "High":
         applicable_fw_keys.update(["asilomar_ai_principles"])
 
@@ -1831,31 +2548,40 @@ def generate_compliance_report(
     ]
 
     if risk_level == "High":
-        lines.extend([
-            "**WARNING: HIGH-RISK AI SYSTEM DETECTED**",
-            "Your AI use case(s) fall under high-risk classification. Under the EU AI Act, this requires:",
-            "- Mandatory conformity assessment (by August 2026)",
-            "- Risk management system documentation",
-            "- Data governance and quality requirements",
-            "- Technical documentation and transparency",
-            "- Human oversight mechanisms",
-            "- Accuracy, robustness, and cybersecurity",
-            "",
-        ])
+        lines.extend(
+            [
+                "**WARNING: HIGH-RISK AI SYSTEM DETECTED**",
+                "Your AI use case(s) fall under high-risk classification. Under the EU AI Act, this requires:",
+                "- Mandatory conformity assessment (by August 2026)",
+                "- Risk management system documentation",
+                "- Data governance and quality requirements",
+                "- Technical documentation and transparency",
+                "- Human oversight mechanisms",
+                "- Accuracy, robustness, and cybersecurity",
+                "",
+            ]
+        )
     elif risk_level == "Limited":
-        lines.extend([
-            "**Limited Risk Classification**",
-            "Transparency obligations apply. Users must be informed they are interacting with AI.",
-            "",
-        ])
+        lines.extend(
+            [
+                "**Limited Risk Classification**",
+                "Transparency obligations apply. Users must be informed they are interacting with AI.",
+                "",
+            ]
+        )
 
     lines.append(f"## Applicable Frameworks ({len(applicable_fw_keys)})")
     lines.append("")
 
-    priority_order = {"Binding Regulation": 1, "Government Safety Institute / Evaluation Framework": 2,
-                     "Voluntary Framework (de facto standard for US government)": 3}
+    priority_order = {
+        "Binding Regulation": 1,
+        "Government Safety Institute / Evaluation Framework": 2,
+        "Voluntary Framework (de facto standard for US government)": 3,
+    }
 
-    sorted_keys = sorted(applicable_fw_keys, key=lambda k: priority_order.get(FRAMEWORKS[k]["type"], 5))
+    sorted_keys = sorted(
+        applicable_fw_keys, key=lambda k: priority_order.get(FRAMEWORKS[k]["type"], 5)
+    )
 
     total_articles_needed = set()
     for fw_key in sorted_keys:
@@ -1878,28 +2604,70 @@ def generate_compliance_report(
     if org_size == "startup":
         timeline = "8-12 weeks"
         phases = [
-            ("Phase 1 (Weeks 1-3): Foundation", "Implement Articles 1-5 (Foundational Principles). Establish care-based safety culture."),
-            ("Phase 2 (Weeks 4-6): Governance", "Implement Articles 9-15 (Governance Structure). Assign accountability."),
-            ("Phase 3 (Weeks 7-9): Technical", "Implement Articles 16-20 (Technical Standards). Bias testing, documentation."),
-            ("Phase 4 (Weeks 10-12): Compliance", "Data governance (Articles 21-28), sector-specific requirements, certification preparation."),
+            (
+                "Phase 1 (Weeks 1-3): Foundation",
+                "Implement Articles 1-5 (Foundational Principles). Establish care-based safety culture.",
+            ),
+            (
+                "Phase 2 (Weeks 4-6): Governance",
+                "Implement Articles 9-15 (Governance Structure). Assign accountability.",
+            ),
+            (
+                "Phase 3 (Weeks 7-9): Technical",
+                "Implement Articles 16-20 (Technical Standards). Bias testing, documentation.",
+            ),
+            (
+                "Phase 4 (Weeks 10-12): Compliance",
+                "Data governance (Articles 21-28), sector-specific requirements, certification preparation.",
+            ),
         ]
     elif org_size == "enterprise":
         timeline = "16-24 weeks"
         phases = [
-            ("Phase 1 (Weeks 1-4): Executive Alignment", "Establish Maternal Covenant commitment. Board-level governance approval. Articles 1-8."),
-            ("Phase 2 (Weeks 5-8): Governance Infrastructure", "Full Part II implementation (Articles 9-15). Byzantine Council architecture design."),
-            ("Phase 3 (Weeks 9-12): Technical Implementation", "Part III + Part IV (Articles 16-28). Interpretability, testing, data governance."),
-            ("Phase 4 (Weeks 13-16): Training & Sector Standards", "Parts V + VI (Articles 29-36). Workforce training, sector-specific implementation."),
-            ("Phase 5 (Weeks 17-20): Economic & Social Framework", "Part VII (Articles 37-44). Stakeholder engagement, community benefit assessment."),
-            ("Phase 6 (Weeks 21-24): Long-term Governance & Certification", "Part VIII (Articles 45-52). Certification assessment. Continuous monitoring."),
+            (
+                "Phase 1 (Weeks 1-4): Executive Alignment",
+                "Establish Maternal Covenant commitment. Board-level governance approval. Articles 1-8.",
+            ),
+            (
+                "Phase 2 (Weeks 5-8): Governance Infrastructure",
+                "Full Part II implementation (Articles 9-15). Byzantine Council architecture design.",
+            ),
+            (
+                "Phase 3 (Weeks 9-12): Technical Implementation",
+                "Part III + Part IV (Articles 16-28). Interpretability, testing, data governance.",
+            ),
+            (
+                "Phase 4 (Weeks 13-16): Training & Sector Standards",
+                "Parts V + VI (Articles 29-36). Workforce training, sector-specific implementation.",
+            ),
+            (
+                "Phase 5 (Weeks 17-20): Economic & Social Framework",
+                "Part VII (Articles 37-44). Stakeholder engagement, community benefit assessment.",
+            ),
+            (
+                "Phase 6 (Weeks 21-24): Long-term Governance & Certification",
+                "Part VIII (Articles 45-52). Certification assessment. Continuous monitoring.",
+            ),
         ]
     else:  # sme
         timeline = "12-16 weeks"
         phases = [
-            ("Phase 1 (Weeks 1-4): Core Safety", "Articles 1-8 (Foundational Principles). Care-based safety commitment."),
-            ("Phase 2 (Weeks 5-8): Governance & Technical", "Articles 9-20 (Governance + Technical Standards). Accountability + documentation."),
-            ("Phase 3 (Weeks 9-12): Data & Training", "Articles 21-31 (Data Security + Training). Privacy, security, workforce development."),
-            ("Phase 4 (Weeks 13-16): Compliance & Certification", "Articles 32-52 as applicable. Sector standards, economic framework, certification."),
+            (
+                "Phase 1 (Weeks 1-4): Core Safety",
+                "Articles 1-8 (Foundational Principles). Care-based safety commitment.",
+            ),
+            (
+                "Phase 2 (Weeks 5-8): Governance & Technical",
+                "Articles 9-20 (Governance + Technical Standards). Accountability + documentation.",
+            ),
+            (
+                "Phase 3 (Weeks 9-12): Data & Training",
+                "Articles 21-31 (Data Security + Training). Privacy, security, workforce development.",
+            ),
+            (
+                "Phase 4 (Weeks 13-16): Compliance & Certification",
+                "Articles 32-52 as applicable. Sector standards, economic framework, certification.",
+            ),
         ]
 
     lines.append(f"**Estimated Timeline:** {timeline}")
@@ -1910,11 +2678,19 @@ def generate_compliance_report(
         lines.append("")
 
     lines.append("## Key Recommendation")
-    lines.append(f"Implement the full CSOAI Partnership Charter for **one certification covering all {len(applicable_fw_keys)} applicable frameworks**.")
-    lines.append(f"Total CSOAI articles needed across all frameworks: **{len(total_articles_needed)} of 52**.")
+    lines.append(
+        f"Implement the full CSOAI Partnership Charter for **one certification covering all {len(applicable_fw_keys)} applicable frameworks**."
+    )
+    lines.append(
+        f"Total CSOAI articles needed across all frameworks: **{len(total_articles_needed)} of 52**."
+    )
     lines.append("")
-    lines.append("**CSOAI Certification = Faster time-to-market + lower compliance costs + global regulatory acceptance.**")
-    lines.append(f"*Backed by 45,000+ veterans. Protection Through Care, Not Command.*")
+    lines.append(
+        "**CSOAI Certification = Faster time-to-market + lower compliance costs + global regulatory acceptance.**"
+    )
+    lines.append(
+        f"*Backed by AI safety researchers and governance experts. Protection Through Care, Not Command.*"
+    )
 
     return "\n".join(lines)
 
@@ -1922,6 +2698,7 @@ def generate_compliance_report(
 # ============================================================
 # TOOL 8: get_partnership_charter
 # ============================================================
+
 
 @mcp.tool()
 def get_partnership_charter(api_key: str = "") -> str:
