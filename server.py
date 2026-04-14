@@ -23,6 +23,9 @@ import json
 
 # ── Authentication ──────────────────────────────────────────────
 import os as _os
+import sys, os
+sys.path.insert(0, os.path.expanduser("~/clawd/meok-labs-engine/shared"))
+from auth_middleware import check_access
 _MEOK_API_KEY = _os.environ.get("MEOK_API_KEY", "")
 
 def _check_auth(api_key: str = "") -> str | None:
@@ -1187,8 +1190,7 @@ def _get_article_details(article_id: str) -> Optional[dict]:
 @mcp.tool()
 def query_crosswalk(
     framework: str,
-    article_or_clause: Optional[str] = None,
-) -> str:
+    article_or_clause: Optional[str] = None, api_key: str = "") -> str:
     """Query the CSOAI crosswalk mapping for a specific framework.
 
     Given a framework name (e.g., 'EU AI Act', 'NIST RMF', 'Anthropic'),
@@ -1199,6 +1201,9 @@ def query_crosswalk(
         framework: Framework name or alias (e.g., 'EU AI Act', 'NIST', 'UNESCO', 'OECD')
         article_or_clause: Optional specific provision to query (e.g., 'Human Oversight', 'GOVERN', 'T1')
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
     key = _resolve_framework_key(framework)
     if not key:
         available = [f["name"] for f in FRAMEWORKS.values()]
@@ -1274,8 +1279,7 @@ def query_crosswalk(
 def crosswalk_bridge(
     framework_a: str,
     framework_b: str,
-    focus_area: Optional[str] = None,
-) -> str:
+    focus_area: Optional[str] = None, api_key: str = "") -> str:
     """Bridge two frameworks through CSOAI — the killer feature.
 
     Shows how two frameworks (e.g., 'EU AI Act' and 'NIST RMF') map to each
@@ -1287,6 +1291,9 @@ def crosswalk_bridge(
         framework_b: Second framework name (e.g., 'NIST RMF')
         focus_area: Optional topic to focus on (e.g., 'transparency', 'safety', 'oversight')
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
     key_a = _resolve_framework_key(framework_a)
     key_b = _resolve_framework_key(framework_b)
 
@@ -1410,8 +1417,7 @@ def crosswalk_bridge(
 @mcp.tool()
 def compliance_gap_analysis(
     frameworks: list[str],
-    organization_sector: Optional[str] = None,
-) -> str:
+    organization_sector: Optional[str] = None, api_key: str = "") -> str:
     """Identify compliance gaps across multiple frameworks.
 
     Given a list of frameworks an organization needs to comply with,
@@ -1421,6 +1427,9 @@ def compliance_gap_analysis(
         frameworks: List of framework names (e.g., ['EU AI Act', 'NIST RMF', 'OECD'])
         organization_sector: Optional sector for context (e.g., 'healthcare', 'finance', 'defense')
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
     resolved = []
     for fw_name in frameworks:
         key = _resolve_framework_key(fw_name)
@@ -1532,12 +1541,15 @@ def compliance_gap_analysis(
 # ============================================================
 
 @mcp.tool()
-def get_unified_crosswalk() -> str:
+def get_unified_crosswalk(api_key: str = "") -> str:
     """Return the CSOAI Master Unified Crosswalk showing all 12 frameworks mapped together.
 
     Returns the complete alignment matrix showing how all 12 major global AI frameworks
     align with each of CSOAI's 8 parts and 52 articles — the universal convergence view.
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
     lines = [
         "# CSOAI Master Unified Crosswalk",
         "## The Universal AI Governance Framework",
@@ -1605,8 +1617,7 @@ def get_unified_crosswalk() -> str:
 
 @mcp.tool()
 def search_by_topic(
-    topic: str,
-) -> str:
+    topic: str, api_key: str = "") -> str:
     """Search across all crosswalks by topic.
 
     Search by topic (e.g., 'transparency', 'bias', 'human oversight',
@@ -1616,6 +1627,9 @@ def search_by_topic(
     Args:
         topic: Topic to search for (e.g., 'transparency', 'bias', 'human oversight')
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
     topic_lower = topic.lower().strip()
 
     # Find matching CSOAI articles
@@ -1699,12 +1713,15 @@ def search_by_topic(
 # ============================================================
 
 @mcp.tool()
-def list_frameworks() -> str:
+def list_frameworks(api_key: str = "") -> str:
     """List all supported frameworks with metadata.
 
     Returns all 12 supported global AI frameworks with their name,
     jurisdiction, type, enforcement status, and CSOAI alignment level.
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
     lines = [
         "# CSOAI Supported Frameworks",
         f"**Total Frameworks:** {len(FRAMEWORKS)}",
@@ -1742,8 +1759,7 @@ def list_frameworks() -> str:
 def generate_compliance_report(
     jurisdictions: list[str],
     ai_use_cases: list[str],
-    organization_size: Optional[str] = None,
-) -> str:
+    organization_size: Optional[str] = None, api_key: str = "") -> str:
     """Generate a compliance requirements report for an organization.
 
     Given jurisdiction(s) and AI use cases, generates a report showing which
@@ -1754,6 +1770,9 @@ def generate_compliance_report(
         ai_use_cases: List of AI use cases (e.g., ['chatbot', 'hiring AI', 'medical diagnosis'])
         organization_size: Optional size: 'startup', 'sme', 'enterprise' (default: 'sme')
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
     org_size = (organization_size or "sme").lower()
 
     # Map jurisdictions to frameworks
@@ -1905,12 +1924,15 @@ def generate_compliance_report(
 # ============================================================
 
 @mcp.tool()
-def get_partnership_charter() -> str:
+def get_partnership_charter(api_key: str = "") -> str:
     """Return the CSOAI Partnership Charter information.
 
     Returns the full structure, core differentiators, and strategic positioning
     of the CSOAI Partnership Charter — the 52-article governance framework.
     """
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
     charter = PARTNERSHIP_CHARTER
     lines = [
         f"# {charter['title']}",
