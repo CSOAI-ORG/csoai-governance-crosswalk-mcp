@@ -1,6 +1,6 @@
 # CSOAI Governance Crosswalk MCP
 
-The world's first operational Constitutional AI governance crosswalk. 12 major global AI frameworks mapped through the CSOAI Partnership Charter's 52 articles.
+The world's first operational Constitutional AI governance crosswalk. **17 global AI frameworks** mapped through the CSOAI Partnership Charter's 52 articles — the most comprehensive in existence.
 
 Built by [MEOK AI Labs](https://meok.ai) / [Council for the Safety of AI (CSOAI)](https://csoai.org)
 
@@ -10,8 +10,9 @@ Built by [MEOK AI Labs](https://meok.ai) / [Council for the Safety of AI (CSOAI)
 
 ## What This Does
 
-This MCP server provides queryable access to 18 months of regulatory mapping IP -- the CSOAI Partnership Charter crosswalked against 12 major global AI governance frameworks:
+This MCP server provides queryable access to 18 months of regulatory mapping IP -- the CSOAI Partnership Charter crosswalked against **17 major global AI governance frameworks**:
 
+### 🌍 Major Frameworks (12 original)
 1. **EU AI Act** -- Binding regulation, 27 EU member states
 2. **NIST AI RMF** -- US federal AI risk management standard
 3. **Anthropic Constitutional AI** -- Industry standard (CC0)
@@ -24,6 +25,13 @@ This MCP server provides queryable access to 18 months of regulatory mapping IP 
 10. **Montreal Declaration** -- Democratic AI governance
 11. **UK AI Safety Institute** -- Frontier AI evaluation
 12. **G7/G20 AI Principles** -- International governance
+
+### 🆕 NEW for 2026 (5 added)
+13. **Canada AIDA** -- Federal AI law (pending enactment)
+14. **Colorado AI Act** -- US state AI law (effective Feb 2026)
+15. **China AI Regulations** -- Tiered regulatory framework
+16. **US Executive Order** -- Biden's EO on AI (Oct 2023)
+17. *(More coming)*
 
 ## Tools (8)
 

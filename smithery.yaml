@@ -1,5 +1,6 @@
 name: csoai-governance-crosswalk-mcp
-description: "\n        "
+description: 'Csoai Governance Crosswalk MCP server. Tools: query crosswalk, crosswalk
+  bridge, compliance gap analysis. Built by MEOK AI Labs.'
 version: 1.0.0
 tools:
 - name: query_crosswalk
@@ -12,7 +13,7 @@ tools:
     type: string
     required: false
 - name: crosswalk_bridge
-  description: "Bridge two frameworks through CSOAI \u2014 the killer feature."
+  description: Bridge two frameworks through CSOAI — the killer feature.
   parameters:
   - name: framework_a
     type: string

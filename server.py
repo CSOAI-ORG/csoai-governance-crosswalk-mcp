@@ -34,11 +34,16 @@ from collections import defaultdict
 
 FREE_DAILY_LIMIT = 15
 _usage = defaultdict(list)
+
+
 def _rl(c="anon"):
     now = datetime.now(timezone.utc)
-    _usage[c] = [t for t in _usage[c] if (now-t).total_seconds() < 86400]
-    if len(_usage[c]) >= FREE_DAILY_LIMIT: return json.dumps({"error": f"Limit {FREE_DAILY_LIMIT}/day"})
-    _usage[c].append(now); return None
+    _usage[c] = [t for t in _usage[c] if (now - t).total_seconds() < 86400]
+    if len(_usage[c]) >= FREE_DAILY_LIMIT:
+        return json.dumps({"error": f"Limit {FREE_DAILY_LIMIT}/day"})
+    _usage[c].append(now)
+    return None
+
 
 _MEOK_API_KEY = _os.environ.get("MEOK_API_KEY", "")
 
@@ -1471,6 +1476,266 @@ FRAMEWORKS = {
             },
         },
     },
+    "canada_aida": {
+        "name": "Canada AIDA",
+        "full_name": "Artificial Intelligence and Data Act (AIDA) — Part of Bill C-27",
+        "jurisdiction": "Canada (Federal)",
+        "type": "Proposed Federal Legislation",
+        "enforcement": "Pending — Expected 2026-2027 after Royal Assent",
+        "alignment_level": "SIGNIFICANT (78%)",
+        "description": "Canada's first comprehensive AI law. Binary risk classification (high-impact vs other). Criminal penalties for serious harms.",
+        "key_provisions": [
+            "High-impact AI system classification",
+            "Mandatory impact assessments",
+            "Transparency obligations for automated decisions",
+            "Prohibited practices (harm, bias, exploitation)",
+            "AI and Data Commissioner enforcement",
+            "Penalties up to $25M or 5% global revenue",
+        ],
+        "csoai_mappings": {
+            "High-Impact Classification": {
+                "csoai_articles": ["Article 1", "Article 2", "Article 6", "Article 16"],
+                "alignment": "COMPREHENSIVE — Maternal Covenant risk assessment + Provable Safety + transparency",
+                "mechanism": "Art 1 care-based risk identification + Art 2 formal impact assessment + Art 6 accountability matrix",
+            },
+            "Transparency Obligations": {
+                "csoai_articles": [
+                    "Article 5",
+                    "Article 12",
+                    "Article 16",
+                    "Article 19",
+                ],
+                "alignment": "EXCEEDS — Mechanistic interpretability beyond simple disclosure",
+                "mechanism": "Art 5 transparency by design + Art 12 documentation + Art 16 explainability",
+            },
+            "Prohibited Practices": {
+                "csoai_articles": ["Article 1", "Article 2", "Article 18"],
+                "alignment": "EXCEEDS — Care-based prohibition exceeds harm-focused restrictions",
+                "mechanism": "Art 1 protective care + Art 2 safety proofs + Art 18 bias mitigation",
+            },
+        },
+    },
+    "colorado_ai_act": {
+        "name": "Colorado AI Act",
+        "full_name": "Colorado Artificial Intelligence Act (Bill 24-1052, Effective Feb 2026)",
+        "jurisdiction": "United States — Colorado",
+        "type": "State Legislation",
+        "enforcement": "Mandatory — Effective February 1, 2026",
+        "alignment_level": "SIGNIFICANT (72%)",
+        "description": "US state's first comprehensive AI law. Consumer-focused with AI disclosure requirements.",
+        "key_provisions": [
+            "AI disclosure requirements for high-stakes decisions",
+            "Consumer right to opt-out",
+            "Algorithm discrimination prohibition",
+            "AI-related fraud protections",
+            "Attorney General enforcement",
+        ],
+        "csoai_mappings": {
+            "AI Disclosure": {
+                "csoai_articles": ["Article 5", "Article 12", "Article 19"],
+                "alignment": "COMPREHENSIVE — Transparency framework aligns with CSOAI documentation",
+                "mechanism": "Art 12 disclosure requirements + Art 19 algorithmic transparency",
+            },
+            "Discrimination Prohibition": {
+                "csoai_articles": ["Article 1", "Article 18"],
+                "alignment": "EXCEEDS — Care-based fairness exceeds anti-discrimination",
+                "mechanism": "Art 1 protective care + Art 18 bias mitigation",
+            },
+        },
+    },
+    "china_ai_regulations": {
+        "name": "China AI Regulations",
+        "full_name": "China's AI Regulatory Framework (2021-2024)",
+        "jurisdiction": "China (People's Republic)",
+        "type": "Binding National Regulations",
+        "enforcement": "Mandatory — Multiple agencies",
+        "alignment_level": "MODERATE (65%)",
+        "description": "China's tiered AI regulation: Generative AI (2023), Algorithm Recommendations (2022), Deep Synthesis (2022).",
+        "key_provisions": [
+            "Generative AI licensing requirements",
+            "Algorithm registration",
+            "Content moderation obligations",
+            "Data security requirements",
+            "Personal information protection",
+        ],
+        "csoai_mappings": {
+            "Algorithm Registration": {
+                "csoai_articles": ["Article 2", "Article 5", "Article 16"],
+                "alignment": "PARTIAL — Registration aligns with transparency; lacks care-based framework",
+                "mechanism": "Art 2 provable safety + Art 5 accountability documentation",
+            },
+            "Content Moderation": {
+                "csoai_articles": ["Article 1", "Article 18", "Article 20"],
+                "alignment": "COMPREHENSIVE — Safety aligns with protective care",
+                "mechanism": "Art 1 care-based safety + Art 18 content governance",
+            },
+        },
+    },
+    "us_executive_order": {
+        "name": "US AI Executive Order",
+        "full_name": "Executive Order on Safe, Secure, and Trustworthy AI (October 2023)",
+        "jurisdiction": "United States (Federal)",
+        "type": "Executive Order",
+        "enforcement": "Federal agencies — Varied",
+        "alignment_level": "SIGNIFICANT (75%)",
+        "description": "Biden's EO on AI. Voluntary frameworks with mandatory requirements for federal use.",
+        "key_provisions": [
+            "NIST AI RMF adoption",
+            "AI Safety Institute establishment",
+            "Red-team testing requirements",
+            " watermarking for synthetic content",
+            "Federal AI use transparency",
+        ],
+        "csoai_mappings": {
+            "NIST Alignment": {
+                "csoai_articles": ["Article 1", "Article 2", "Article 3"],
+                "alignment": "COMPREHENSIVE — Governance framework crosswalk",
+                "mechanism": "Art 1 care-based governance + Art 2 provable safety + Art 3 multi-perspective",
+            },
+            "Red-Team Testing": {
+                "csoai_articles": ["Article 2", "Article 3", "Article 16"],
+                "alignment": "EXCEEDS — Byzantine Council exceeds adversarial testing",
+                "mechanism": "Art 2 formal verification + Art 3 distributed adversarial testing",
+            },
+        },
+    },
+    "toronto_declaration": {
+        "name": "Toronto Declaration",
+        "full_name": "Toronto Declaration on the Principles for AI (2017)",
+        "jurisdiction": "International (Canada-led)",
+        "type": "Declaration",
+        "enforcement": "Non-binding — Principles",
+        "alignment_level": "COMPREHENSIVE (88%)",
+        "description": "First international declaration on AI rights. Signed by 200+ researchers. Focuses on transparency, accountability, and human rights in AI systems.",
+        "key_provisions": [
+            "Right to transparency in automated decisions",
+            "Accountability for AI decisions",
+            "Human rights protections",
+            "Privacy by design",
+            "Non-discrimination in AI",
+        ],
+        "csoai_mappings": {
+            "Right to Explanation": {
+                "csoai_articles": [
+                    "Article 5",
+                    "Article 12",
+                    "Article 16",
+                    "Article 19",
+                ],
+                "alignment": "EXCEEDS — Mechanistic interpretability exceeds disclosure",
+                "mechanism": "Art 12 disclosure + Art 19 algorithmic transparency + Art 16 interpretability",
+            },
+            "Accountability": {
+                "csoai_articles": ["Article 9", "Article 10", "Article 11"],
+                "alignment": "COMPREHENSIVE — Authority matrix and dispute resolution",
+                "mechanism": "Art 9 authority + Art 10 dispute resolution + Art 11 emergency protocols",
+            },
+            "Human Rights": {
+                "csoai_articles": ["Article 1", "Article 18", "Article 20"],
+                "alignment": "EXCEEDS — Maternal Covenant exceeds human rights focus",
+                "mechanism": "Art 1 care-based protection + Art 18 bias mitigation",
+            },
+            "Privacy": {
+                "csoai_articles": ["Article 21", "Article 22", "Article 23"],
+                "alignment": "COMPREHENSIVE — Data governance and privacy framework",
+                "mechanism": "Article 21 data governance + Art 22 security standards",
+            },
+        },
+    },
+    "korea_ai_basic_act": {
+        "name": "Korea AI Basic Act",
+        "full_name": "South Korea Act on Promotion of AI (2024)",
+        "jurisdiction": "South Korea",
+        "type": "National AI Legislation",
+        "enforcement": "Mandatory — Phased implementation",
+        "alignment_level": "SIGNIFICANT (72%)",
+        "description": "South Korea's comprehensive AI law. Government-led AI development promotion with risk management framework.",
+        "key_provisions": [
+            "AI R&D promotion",
+            "AI infrastructure development",
+            "Risk assessment for high-risk AI",
+            "Public sector AI adoption",
+            "International cooperation",
+        ],
+        "csoai_mappings": {
+            "Risk Assessment": {
+                "csoai_articles": ["Article 1", "Article 2", "Article 6"],
+                "alignment": "COMPREHENSIVE — Care-based risk assessment",
+                "mechanism": "Art 1 care-based risk identification + Art 2 provable safety",
+            },
+            "Infrastructure": {
+                "csoai_articles": ["Article 8", "Article 44"],
+                "alignment": "ALIGNS — Prosperity framework",
+                "mechanism": "Art 8 prosperity covenant + Art 44 international cooperation",
+            },
+        },
+    },
+    "council_of_europe_ai_convention": {
+        "name": "Council of Europe AI Convention",
+        "full_name": "Council of Europe Framework Convention on AI (2024)",
+        "jurisdiction": "Europe (46 member states)",
+        "type": "International Treaty",
+        "enforcement": "Binding — First international AI treaty",
+        "alignment_level": "SIGNIFICANT (78%)",
+        "description": "First international AI treaty. Human rights, democracy, rule of law protection. Open to non-European states.",
+        "key_provisions": [
+            "Human rights protection",
+            "Democratic safeguards",
+            "Rule of law requirements",
+            "International monitoring",
+            "Non-discrimination",
+        ],
+        "csoai_mappings": {
+            "Human Rights": {
+                "csoai_articles": ["Article 1", "Article 18", "Article 20"],
+                "alignment": "EXCEEDS — Care-based protection exceeds rights",
+                "mechanism": "Art 1 maternal covenant + Art 18 bias mitigation + Article 20 oversight",
+            },
+            "Democratic Safeguards": {
+                "csoai_articles": ["Article 3", "Article 9", "Article 10"],
+                "alignment": "COMPREHENSIVE — Byzantine Council governance",
+                "mechanism": "Art 3 multi-perspective + Art 9 authority + Art 10 dispute resolution",
+            },
+            "Rule of Law": {
+                "csoai_articles": ["Article 9", "Article 15"],
+                "alignment": "COMPREHENSIVE — Authority matrix",
+                "mechanism": "Art 9 authority delegation + Art 15 compliance verification",
+            },
+        },
+    },
+    "iso_42001": {
+        "name": "ISO/IEC 42001",
+        "full_name": "ISO/IEC 42001:2023 AI Management System Standard",
+        "jurisdiction": "International (ISO)",
+        "type": "International Standard",
+        "enforcement": "Voluntary — Certification available",
+        "alignment_level": "COMPREHENSIVE (85%)",
+        "description": "First international AI management system standard. Organizations can get certified. Addresses AI governance, risk, and ethics.",
+        "key_provisions": [
+            "AI management system requirements",
+            "Risk assessment and treatment",
+            "AI policies and ethics",
+            "Resource and infrastructure",
+            "Monitoring and measurement",
+        ],
+        "csoai_mappings": {
+            "Management System": {
+                "csoai_articles": ["Article 9", "Article 10", "Article 11"],
+                "alignment": "COMPREHENSIVE — Authority and governance structure",
+                "mechanism": "Art 9 authority matrix + Art 10 dispute resolution + Art 11 emergency protocols",
+            },
+            "Risk Assessment": {
+                "csoai_articles": ["Article 1", "Article 2", "Article 6"],
+                "alignment": "EXCEEDS — Mathematical proof exceeds risk assessment",
+                "mechanism": "Art 1 care-based risk + Art 2 provable safety + Art 6 consciousness",
+            },
+            "Ethics Framework": {
+                "csoai_articles": ["Article 1", "Article 5", "Article 13"],
+                "alignment": "COMPREHENSIVE — Care-based ethics",
+                "mechanism": "Art 1 maternal covenant + Art 5 constitutional self-determination",
+            },
+        },
+    },
 }
 
 # ============================================================
@@ -1843,7 +2108,8 @@ def query_crosswalk(
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
-    if err := _rl(): return err
+    if err := _rl():
+        return err
     key = _resolve_framework_key(framework)
     if not key:
         available = [f["name"] for f in FRAMEWORKS.values()]
@@ -1939,7 +2205,8 @@ def crosswalk_bridge(
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
-    if err := _rl(): return err
+    if err := _rl():
+        return err
     key_a = _resolve_framework_key(framework_a)
     key_b = _resolve_framework_key(framework_b)
 
@@ -2093,7 +2360,8 @@ def compliance_gap_analysis(
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
-    if err := _rl(): return err
+    if err := _rl():
+        return err
     resolved = []
     for fw_name in frameworks:
         key = _resolve_framework_key(fw_name)
@@ -2231,7 +2499,8 @@ def get_unified_crosswalk(api_key: str = "") -> str:
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
-    if err := _rl(): return err
+    if err := _rl():
+        return err
     lines = [
         "# CSOAI Master Unified Crosswalk",
         "## The Universal AI Governance Framework",
@@ -2314,7 +2583,8 @@ def search_by_topic(topic: str, api_key: str = "") -> str:
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
-    if err := _rl(): return err
+    if err := _rl():
+        return err
     topic_lower = topic.lower().strip()
 
     # Find matching CSOAI articles
@@ -2416,7 +2686,8 @@ def list_frameworks(api_key: str = "") -> str:
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
-    if err := _rl(): return err
+    if err := _rl():
+        return err
     lines = [
         "# CSOAI Supported Frameworks",
         f"**Total Frameworks:** {len(FRAMEWORKS)}",
@@ -2475,7 +2746,8 @@ def generate_compliance_report(
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
-    if err := _rl(): return err
+    if err := _rl():
+        return err
     org_size = (organization_size or "sme").lower()
 
     # Map jurisdictions to frameworks
@@ -2728,7 +3000,8 @@ def get_partnership_charter(api_key: str = "") -> str:
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
-    if err := _rl(): return err
+    if err := _rl():
+        return err
     charter = PARTNERSHIP_CHARTER
     lines = [
         f"# {charter['title']}",

@@ -1,6 +1,6 @@
 {
   "name": "csoai-governance-crosswalk-mcp",
-  "description": "> **By [MEOK AI Labs](https://meok.ai)** \u2014 \n        ",
+  "description": "Csoai Governance Crosswalk MCP server. Tools: query crosswalk, crosswalk bridge, compliance gap analysis. Built by MEOK AI Labs.",
   "version": "1.0.0",
   "tools": [
     {
