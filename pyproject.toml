@@ -25,3 +25,6 @@ Repository = "https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp"
 [tool.hatch.build.targets.wheel]
 packages = ["."]
 only-include = ["server.py"]
+
+[project.scripts]
+csoai_governance_crosswalk_mcp = "server:main"

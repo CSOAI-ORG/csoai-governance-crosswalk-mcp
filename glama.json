@@ -1,0 +1,10 @@
+{
+  "name": "csoai-governance-crosswalk-mcp",
+  "description": "MEOK AI Labs \u2014 csoai-governance-crosswalk-mcp",
+  "vendor": "MEOK AI Labs",
+  "homepage": "https://meok.ai",
+  "repository": "https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp",
+  "license": "MIT",
+  "runtime": "python",
+  "entryPoint": "mcp-wrapper.py"
+}
