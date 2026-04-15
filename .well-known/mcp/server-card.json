@@ -1,0 +1,70 @@
+{
+  "name": "csoai-governance-crosswalk",
+  "description": "CSOAI Governance Crosswalk MCP Server \u2014 the world's first operational Constitutional AI crosswalk mapping 12 major global AI frameworks through the CSOAI Partnership Charter's 52 articles. Provides regulation-to-regulation bridging, compliance gap analysis, and unified governance queries. Built on 18 months of regulatory mapping IP by MEOK AI Labs / CSOAI. Core principle: Protection Through Care, Not Command.",
+  "version": "1.0.0",
+  "protocol_version": "2025-11-25",
+  "publisher": {
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai",
+    "email": "nicholas@meok.ai"
+  },
+  "repository": "https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp",
+  "license": "MIT",
+  "transport": [
+    "stdio",
+    "streamable-http"
+  ],
+  "authentication": {
+    "type": "api-key",
+    "free_tier": true,
+    "free_limit": "15 calls/day"
+  },
+  "tools": [
+    {
+      "name": "query_crosswalk",
+      "description": "Query the CSOAI crosswalk mapping for a specific framework."
+    },
+    {
+      "name": "crosswalk_bridge",
+      "description": "Bridge two frameworks through CSOAI \u2014 the killer feature."
+    },
+    {
+      "name": "compliance_gap_analysis",
+      "description": "Identify compliance gaps across multiple frameworks."
+    },
+    {
+      "name": "get_unified_crosswalk",
+      "description": "Return the CSOAI Master Unified Crosswalk showing all 12 frameworks mapped together."
+    },
+    {
+      "name": "search_by_topic",
+      "description": "Search across all crosswalks by topic."
+    },
+    {
+      "name": "list_frameworks",
+      "description": "List all supported frameworks with metadata."
+    },
+    {
+      "name": "generate_compliance_report",
+      "description": "Generate a compliance requirements report for an organization."
+    },
+    {
+      "name": "get_partnership_charter",
+      "description": "Return the CSOAI Partnership Charter information."
+    }
+  ],
+  "categories": [
+    "AI & Machine Learning",
+    "Agent Infrastructure",
+    "Legal & Regulatory"
+  ],
+  "pricing": {
+    "free": {
+      "calls_per_day": 15
+    },
+    "pro": {
+      "price": "$29/month",
+      "url": "https://meok.ai/pricing"
+    }
+  }
+}
