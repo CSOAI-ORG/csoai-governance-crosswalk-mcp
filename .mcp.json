@@ -1,6 +1,6 @@
 {
   "name": "csoai-governance-crosswalk-mcp",
-  "description": "The world's first operational Constitutional AI governance crosswalk. 12 major global AI frameworks mapped through the CSOAI Partnership Charter's 52 articles.",
+  "description": "> **By [MEOK AI Labs](https://meok.ai)** \u2014 \n        ",
   "version": "1.0.0",
   "tools": [
     {
@@ -13,8 +13,7 @@
             "type": "string"
           },
           "article_or_clause": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "required": [
@@ -35,8 +34,7 @@
             "type": "string"
           },
           "focus_area": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "required": [
@@ -52,14 +50,10 @@
         "type": "object",
         "properties": {
           "frameworks": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "type": "array"
           },
           "organization_sector": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "required": [
@@ -107,20 +101,13 @@
         "type": "object",
         "properties": {
           "jurisdictions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "type": "array"
           },
           "ai_use_cases": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "type": "array"
           },
           "organization_size": {
-            "type": "string",
-            "nullable": true
+            "type": "string"
           }
         },
         "required": [

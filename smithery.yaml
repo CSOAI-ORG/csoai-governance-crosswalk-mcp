@@ -1,7 +1,5 @@
 name: csoai-governance-crosswalk-mcp
-description: The world's first operational Constitutional AI governance crosswalk.
-  12 major global AI frameworks mapped through the CSOAI Partnership Charter's 52
-  articles.
+description: "\n        "
 version: 1.0.0
 tools:
 - name: query_crosswalk

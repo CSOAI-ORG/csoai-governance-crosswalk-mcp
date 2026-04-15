@@ -29,6 +29,17 @@ import sys, os
 sys.path.insert(0, os.path.expanduser("~/clawd/meok-labs-engine/shared"))
 from auth_middleware import check_access
 
+from datetime import datetime, timezone
+from collections import defaultdict
+
+FREE_DAILY_LIMIT = 15
+_usage = defaultdict(list)
+def _rl(c="anon"):
+    now = datetime.now(timezone.utc)
+    _usage[c] = [t for t in _usage[c] if (now-t).total_seconds() < 86400]
+    if len(_usage[c]) >= FREE_DAILY_LIMIT: return json.dumps({"error": f"Limit {FREE_DAILY_LIMIT}/day"})
+    _usage[c].append(now); return None
+
 _MEOK_API_KEY = _os.environ.get("MEOK_API_KEY", "")
 
 
@@ -1832,6 +1843,7 @@ def query_crosswalk(
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+    if err := _rl(): return err
     key = _resolve_framework_key(framework)
     if not key:
         available = [f["name"] for f in FRAMEWORKS.values()]
@@ -1927,6 +1939,7 @@ def crosswalk_bridge(
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+    if err := _rl(): return err
     key_a = _resolve_framework_key(framework_a)
     key_b = _resolve_framework_key(framework_b)
 
@@ -2080,6 +2093,7 @@ def compliance_gap_analysis(
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+    if err := _rl(): return err
     resolved = []
     for fw_name in frameworks:
         key = _resolve_framework_key(fw_name)
@@ -2217,6 +2231,7 @@ def get_unified_crosswalk(api_key: str = "") -> str:
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+    if err := _rl(): return err
     lines = [
         "# CSOAI Master Unified Crosswalk",
         "## The Universal AI Governance Framework",
@@ -2299,6 +2314,7 @@ def search_by_topic(topic: str, api_key: str = "") -> str:
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+    if err := _rl(): return err
     topic_lower = topic.lower().strip()
 
     # Find matching CSOAI articles
@@ -2400,6 +2416,7 @@ def list_frameworks(api_key: str = "") -> str:
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+    if err := _rl(): return err
     lines = [
         "# CSOAI Supported Frameworks",
         f"**Total Frameworks:** {len(FRAMEWORKS)}",
@@ -2458,6 +2475,7 @@ def generate_compliance_report(
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+    if err := _rl(): return err
     org_size = (organization_size or "sme").lower()
 
     # Map jurisdictions to frameworks
@@ -2710,6 +2728,7 @@ def get_partnership_charter(api_key: str = "") -> str:
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+    if err := _rl(): return err
     charter = PARTNERSHIP_CHARTER
     lines = [
         f"# {charter['title']}",
