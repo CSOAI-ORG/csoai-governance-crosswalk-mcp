@@ -1476,6 +1476,46 @@ FRAMEWORKS = {
             },
         },
     },
+    "beijing_ai_principles": {
+        "name": "Beijing AI Principles",
+        "full_name": "Beijing AI Principles (May 2019) — Beijing Academy of Artificial Intelligence",
+        "jurisdiction": "China",
+        "type": "Industry Principles",
+        "enforcement": "Voluntary — Industry endorsement",
+        "alignment_level": "MODERATE (65%)",
+        "description": "Beijing Academy of AI principles. Focus on harmony, responsibility, and collective benefit. Western care-based alignment.",
+        "key_provisions": [
+            "Do no harm",
+            "Be beneficial",
+            "Be controllable",
+            "Be transparent and explainable",
+            "Be fair and non-discriminatory",
+            "Privacy by design",
+            "Collaboration and openness",
+        ],
+        "csoai_mappings": {
+            "Do No Harm": {
+                "csoai_articles": ["Article 1", "Article 2"],
+                "alignment": "EXCEEDS — Care-based protection exceeds harm prevention",
+                "mechanism": "Art 1 maternal covenant + Art 2 provable safety",
+            },
+            "Be Beneficial": {
+                "csoai_articles": ["Article 1", "Article 8"],
+                "alignment": "ALIGNS — Prosperity covenant aligns with collective benefit",
+                "mechanism": "Art 1 care + Art 8 prosperity covenant",
+            },
+            "Be Controllable": {
+                "csoai_articles": ["Article 3", "Article 11"],
+                "alignment": "COMPREHENSIVE — Byzantine Council + emergency protocols",
+                "mechanism": "Art 3 multi-perspective + Art 11 emergency",
+            },
+            "Transparency": {
+                "csoai_articles": ["Article 12", "Article 16", "Article 19"],
+                "alignment": "EXCEEDS — Mechanistic interpretability",
+                "mechanism": "Full transparency framework",
+            },
+        },
+    },
     "canada_aida": {
         "name": "Canada AIDA",
         "full_name": "Artificial Intelligence and Data Act (AIDA) — Part of Bill C-27",
