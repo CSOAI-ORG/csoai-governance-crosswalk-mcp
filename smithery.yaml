@@ -1,6 +1,5 @@
 name: csoai-governance-crosswalk-mcp
-description: 'Csoai Governance Crosswalk MCP server. Tools: query crosswalk, crosswalk
-  bridge, compliance gap analysis. Built by MEOK AI Labs.'
+description: "CSOAI Governance Crosswalk MCP — 30 frameworks. Map EU AI Act, NIST, GDPR, HIPAA, CMMC 2.0, NDAA §1513, ISO 42001, and 23 more via 52-article Partnership Charter. Built by MEOK AI Labs."
 version: 1.0.0
 tools:
 - name: query_crosswalk
@@ -34,8 +33,7 @@ tools:
     type: string
     required: false
 - name: get_unified_crosswalk
-  description: Return the CSOAI Master Unified Crosswalk showing all 12 frameworks
-    mapped together.
+  description: Return the CSOAI Master Unified Crosswalk showing all 30 frameworks mapped together.
   parameters: []
 - name: search_by_topic
   description: Search across all crosswalks by topic.
@@ -44,7 +42,7 @@ tools:
     type: string
     required: true
 - name: list_frameworks
-  description: List all supported frameworks with metadata.
+  description: List all 30 supported frameworks with metadata.
   parameters: []
 - name: generate_compliance_report
   description: Generate a compliance requirements report for an organization.
