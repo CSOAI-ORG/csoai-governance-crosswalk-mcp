@@ -8,6 +8,19 @@ Built by [MEOK AI Labs](https://meok.ai) / [Council for the Safety of AI (CSOAI)
 
 ---
 
+## 🏢 Enterprise & Pro Licensing
+
+| Plan | Price | Link |
+|------|-------|------|
+| **Core MCP Pack** | £49/mo | [Subscribe](https://buy.stripe.com/4gM4gB2G05kmeQJ42k8k805) |
+| **Compliance Trinity** | £79/mo | [Subscribe](https://buy.stripe.com/eVq5kF2G0aEG3812Yg8k82i) |
+| **Full Suite** (9 MCPs) | £999/mo | [Subscribe](https://buy.stripe.com/6oU14p0xS4giaAtbuM8k82q) |
+| **Premium Assessment** | £15,000 | [Book Now](https://buy.stripe.com/bJefZj80kcMObEx2Yg8k82r) |
+
+> Built by [CSOAI](https://csoai.org) — 7+ regulatory framework crosswalk.
+
+---
+**MEOK AI Labs** | [meok.ai](https://meok.ai) | [csoai.org](https://csoai.org) | nicholas@meok.ai
 ## What This Does
 
 This MCP server provides queryable access to 18 months of regulatory mapping IP -- the CSOAI Partnership Charter crosswalked against **17 major global AI governance frameworks**:
