@@ -3480,5 +3480,106 @@ def neural_insights(api_key: str = "") -> dict:
 # ENTRY POINT
 # ============================================================
 
+@mcp.tool()
+def quick_compare(framework_a: str, framework_b: str) -> dict:
+    """Instant comparison of two AI governance frameworks. No API key needed.
+
+    Args:
+        framework_a: First framework name (e.g. 'EU AI Act')
+        framework_b: Second framework name (e.g. 'NIST AI RMF')
+
+    Returns:
+        Side-by-side comparison with key overlaps and differences.
+    """
+    # Find frameworks by fuzzy match
+    def _find(name):
+        name_l = name.lower().strip()
+        for k, v in FRAMEWORKS.items():
+            if name_l in k.lower() or name_l in v["name"].lower() or name_l in v.get("full_name", "").lower():
+                return k, v
+        return None, None
+
+    key_a, fw_a = _find(framework_a)
+    key_b, fw_b = _find(framework_b)
+
+    if not fw_a:
+        return {"error": f"Framework '{framework_a}' not found. Use supported_frameworks() to see all options."}
+    if not fw_b:
+        return {"error": f"Framework '{framework_b}' not found. Use supported_frameworks() to see all options."}
+
+    # Build comparison
+    comparison = {
+        "framework_a": {
+            "name": fw_a["name"],
+            "full_name": fw_a.get("full_name", fw_a["name"]),
+            "jurisdiction": fw_a.get("jurisdiction", "N/A"),
+            "type": fw_a.get("type", "N/A"),
+            "enforcement": fw_a.get("enforcement", "N/A"),
+            "key_provisions": fw_a.get("key_provisions", [])[:5],
+        },
+        "framework_b": {
+            "name": fw_b["name"],
+            "full_name": fw_b.get("full_name", fw_b["name"]),
+            "jurisdiction": fw_b.get("jurisdiction", "N/A"),
+            "type": fw_b.get("type", "N/A"),
+            "enforcement": fw_b.get("enforcement", "N/A"),
+            "key_provisions": fw_b.get("key_provisions", [])[:5],
+        },
+    }
+
+    # Find common CSOAI article mappings
+    mappings_a = fw_a.get("csoai_mappings", {})
+    mappings_b = fw_b.get("csoai_mappings", {})
+    common_topics = set(mappings_a.keys()) & set(mappings_b.keys())
+
+    overlaps = []
+    for topic in sorted(common_topics):
+        overlaps.append({
+            "topic": topic,
+            "framework_a_alignment": mappings_a[topic].get("alignment", "N/A"),
+            "framework_b_alignment": mappings_b[topic].get("alignment", "N/A"),
+        })
+
+    comparison["common_topics"] = overlaps
+    comparison["common_topic_count"] = len(overlaps)
+    comparison["unique_to_a"] = sorted(set(mappings_a.keys()) - set(mappings_b.keys()))
+    comparison["unique_to_b"] = sorted(set(mappings_b.keys()) - set(mappings_a.keys()))
+    comparison["next_step"] = "Use crosswalk_bridge() for full regulation-to-regulation mapping"
+    comparison["powered_by"] = "MEOK AI Labs | https://meok.ai"
+    return comparison
+
+
+@mcp.tool()
+def supported_frameworks() -> dict:
+    """Lists all supported AI governance frameworks with descriptions. No parameters needed."""
+    frameworks = []
+    for key, fw in FRAMEWORKS.items():
+        frameworks.append({
+            "id": key,
+            "name": fw["name"],
+            "full_name": fw.get("full_name", fw["name"]),
+            "jurisdiction": fw.get("jurisdiction", "N/A"),
+            "type": fw.get("type", "N/A"),
+            "enforcement": fw.get("enforcement", "N/A"),
+            "alignment_level": fw.get("alignment_level", "N/A"),
+        })
+    return {
+        "total_frameworks": len(frameworks),
+        "frameworks": frameworks,
+        "tools_available": [
+            "quick_compare(framework_a, framework_b) — instant comparison",
+            "query_crosswalk(framework) — detailed CSOAI mapping",
+            "crosswalk_bridge(framework_a, framework_b) — regulation-to-regulation bridge",
+            "compliance_gap_analysis(frameworks) — multi-framework gap analysis",
+            "search_by_topic(topic) — cross-framework topic search",
+        ],
+        "powered_by": "MEOK AI Labs | https://meok.ai",
+    }
+
+
+def main():
+    mcp.run(transport="stdio")
+
+
 if __name__ == "__main__":
     mcp.run(transport="stdio")

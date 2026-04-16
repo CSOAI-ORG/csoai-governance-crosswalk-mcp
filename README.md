@@ -69,6 +69,22 @@ pip install mcp
 python server.py
 ```
 
+## Zero-Friction Tools
+
+### `quick_compare`
+Two framework names to instant comparison. **No API key needed.**
+
+```
+quick_compare(framework_a="EU AI Act", framework_b="NIST AI RMF")
+```
+
+### `supported_frameworks`
+Lists all supported AI governance frameworks with descriptions. **No parameters needed.**
+
+```
+supported_frameworks()
+```
+
 ### Claude Desktop Configuration
 
 ```json
