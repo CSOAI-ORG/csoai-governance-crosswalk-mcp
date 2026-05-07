@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "csoai-governance-crosswalk-mcp"
-version = "1.0.5"
+version = "1.0.6"
 readme = "README.md"
 description = "Csoai Governance Crosswalk MCP server. Tools: query crosswalk, crosswalk bridge, compliance gap analysis. Built by MEOK AI Labs."
 license = {file = "LICENSE"}
