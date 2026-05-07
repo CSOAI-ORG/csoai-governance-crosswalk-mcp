@@ -1,3 +1,7 @@
+[![csoai-governance-crosswalk-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/csoai-governance-crosswalk-mcp/badges/score.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/csoai-governance-crosswalk-mcp)
+[![MCP Registry](https://img.shields.io/badge/MCP_Registry-Published-green)](https://registry.modelcontextprotocol.io)
+[![PyPI](https://img.shields.io/pypi/v/csoai-governance-crosswalk-mcp)](https://pypi.org/project/csoai-governance-crosswalk-mcp/)
+
 [![csoai-governance-crosswalk-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/csoai-governance-crosswalk-mcp/badges/card.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/csoai-governance-crosswalk-mcp)
 
 <div align="center">
