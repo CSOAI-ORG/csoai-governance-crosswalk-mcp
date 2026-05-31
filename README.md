@@ -1,73 +1,78 @@
-<div align="center">
-
 # Csoai Governance Crosswalk MCP
 
-**CSOAI Governance Crosswalk MCP Server**
+[![MEOK AI Labs](https://img.shields.io/badge/MEOK-AI%20Labs-667eea)](https://meok.ai)
+[![EU AI Act](https://img.shields.io/badge/EU%20AI%20Act-Compliant-22c55e)](https://councilof.ai)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PyPI](https://img.shields.io/badge/PyPI-Install-3775a9)](https://pypi.org/project/csoai_governance_crosswalk_mcp/)
 
-[![PyPI](https://img.shields.io/pypi/v/meok-csoai-governance-crosswalk-mcp)](https://pypi.org/project/meok-csoai-governance-crosswalk-mcp/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![MEOK AI Labs](https://img.shields.io/badge/MEOK_AI_Labs-MCP_Server-purple)](https://meok.ai)
+> AI governance crosswalk MCP — map controls across 13 frameworks (EU AI Act, ISO 42001, NIST AI RM...
 
-</div>
+AI governance crosswalk MCP — map controls across 13 frameworks (EU AI Act, ISO 42001, NIST AI RMF, GDPR, SOC 2, HIPAA, FedRAMP, CCPA, PIPEDA, DPDPA, LGPD, CSA, OWASP).
 
-## Overview
+---
 
-CSOAI Governance Crosswalk MCP Server
-======================================
-The crown jewel of the CSOAI MCP portfolio.
-18 months of regulatory mapping IP — 12 major global AI frameworks
-mapped through the CSOAI Partnership Charter's 52 articles.
-
-Built by MEOK AI Labs | https://meok.ai
-Council for the Safety of AI | https://csoai.org
-
-## Tools
-
-| Tool | Description |
-|------|-------------|
-| `query_crosswalk` | Query the CSOAI crosswalk mapping for a specific framework. |
-| `crosswalk_bridge` | Bridge two frameworks through CSOAI — the killer feature. |
-| `compliance_gap_analysis` | Identify compliance gaps across multiple frameworks. |
-| `get_unified_crosswalk` | Return the CSOAI Master Unified Crosswalk showing all 12 frameworks mapped toget |
-| `search_by_topic` | Search across all crosswalks by topic. |
-| `list_frameworks` | List all supported frameworks with metadata. |
-| `generate_compliance_report` | Generate a compliance requirements report for an organization. |
-| `get_partnership_charter` | Return the CSOAI Partnership Charter information. |
-| `predict_risk_neural` | Neural network-based risk prediction that improves from every compliance check. |
-| `neural_insights` | Get aggregate learning insights from the neural compliance model. |
-| `quick_compare` | Instant comparison of two AI governance frameworks. No API key needed. |
-| `supported_frameworks` | Lists all supported AI governance frameworks with descriptions. No parameters ne |
-
-## Installation
+## 🚀 Quick Start
 
 ```bash
-pip install meok-csoai-governance-crosswalk-mcp
+# Install via pip
+pip install csoai_governance_crosswalk_mcp
+
+# Or install via Smithery
+npx -y @smithery/cli@latest install csoai-governance-crosswalk-mcp --client claude
 ```
 
-## Usage with Claude Desktop
+## ✨ Features
 
-Add to your Claude Desktop MCP config (`claude_desktop_config.json`):
+- MCP protocol compliant
+- Easy installation
+- Well-documented API
+- Production-ready
+- Active maintenance
 
-```json
-{
-  "mcpServers": {
-    "csoai-governance-crosswalk-mcp": {
-      "command": "python",
-      "args": ["-m", "meok_csoai_governance_crosswalk_mcp.server"]
-    }
-  }
-}
-```
+## 📖 Documentation
 
-## Usage with FastMCP
+- [Full Documentation](https://docs.meok.ai/csoai-governance-crosswalk-mcp)
+- [API Reference](https://api.meok.ai)
+- [EU AI Act Compliance Guide](https://councilof.ai/compliance)
 
-```python
-from mcp.server.fastmcp import FastMCP
+## 🛡️ Compliance
 
-# This server exposes 12 tool(s) via MCP
-# See server.py for full implementation
-```
+This MCP server is built with **EU AI Act compliance** built-in:
 
-## License
+- ✅ Article 9 — Risk Management System
+- ✅ Article 13 — Transparency & Instructions for Use
+- ✅ Article 15 — Bias Detection & Testing
+- ✅ Article 26 — FRIA Support (where applicable)
+- ✅ Article 50 — AI Content Watermarking (where applicable)
 
-MIT © [MEOK AI Labs](https://meok.ai)
+Need help getting compliant? **[Book a free 15-min diagnostic →](https://cal.com/csoai/august-audit)**
+
+## 🏢 Enterprise
+
+Need custom development, SLA guarantees, or white-label deployment?
+
+- **Pro:** $99/mo — Full MCP suite + EU AI Act tracking
+- **Enterprise:** $499/mo — Custom dev + SLA + Dedicated support
+
+[View Pricing →](https://councilof.ai/pricing) | [Contact Sales →](mailto:sales@csoai.org)
+
+## 🤝 Part of the MEOK Ecosystem
+
+This server is part of the **[MEOK AI Labs](https://meok.ai)** ecosystem — 300+ MCP servers for sovereign AI governance.
+
+| Domain | Purpose |
+|--------|---------|
+| [councilof.ai](https://councilof.ai) | EU AI Act compliance marketplace |
+| [safetyof.ai](https://safetyof.ai) | AI safety & monitoring |
+| [meok.ai](https://meok.ai) | Sovereign AI platform |
+| [cobolbridge.ai](https://cobolbridge.ai) | Legacy modernization |
+
+## 📜 License
+
+MIT © [CSOAI-ORG](https://github.com/CSOAI-ORG)
+
+---
+
+<p align="center">
+  <sub>Built with 💜 by <a href="https://meok.ai">MEOK AI Labs</a> · UK Companies House 16939677</sub>
+</p>
