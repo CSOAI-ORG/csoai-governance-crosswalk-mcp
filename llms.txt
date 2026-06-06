@@ -1,0 +1,39 @@
+# Csoai Governance Crosswalk MCP
+
+> **⚖️ Built by [MEOK AI Labs](https://meok.ai) / [CSOAI](https://csoai.org).** Need this applied to _your_ system fast? Book a 30-min Founder Office Hour (£29) → **https://meok.ai/work** · Full governance platform → **https://meok.ai**
+
+`csoai-governance-crosswalk-mcp` is a Model Context Protocol (MCP) server by MEOK AI Labs.
+
+## Install
+
+```bash
+pip install csoai-governance-crosswalk-mcp
+```
+
+Or run without installing:
+
+```bash
+uvx csoai-governance-crosswalk-mcp
+```
+
+## Tools
+
+- `query_crosswalk` — Query the CSOAI crosswalk mapping for a specific framework.
+- `crosswalk_bridge` — Bridge two frameworks through CSOAI — the killer feature.
+- `compliance_gap_analysis` — Identify compliance gaps across multiple frameworks.
+- `get_unified_crosswalk` — Return the CSOAI Master Unified Crosswalk showing all 12 frameworks mapped together.
+- `search_by_topic` — Search across all crosswalks by topic.
+- `list_frameworks` — List all supported frameworks with metadata.
+- `generate_compliance_report` — Generate a compliance requirements report for an organization.
+- `get_partnership_charter` — Return the CSOAI Partnership Charter information.
+- `predict_risk_neural` — Neural network-based risk prediction that improves from every compliance check.
+- `neural_insights` — Get aggregate learning insights from the neural compliance model.
+- `quick_compare` — Instant comparison of two AI governance frameworks. No API key needed.
+- `supported_frameworks` — Lists all supported AI governance frameworks with descriptions. No parameters needed.
+
+## Links
+
+- Source: https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp
+- PyPI: https://pypi.org/project/csoai-governance-crosswalk-mcp/
+- MEOK AI Labs: https://meok.ai
+- Council of AI: https://councilof.ai
