@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "csoai-governance-crosswalk-mcp"
-version = "1.0.6"
+version = "1.0.10"
 readme = "README.md"
 description = "Csoai Governance Crosswalk MCP server. Tools: query crosswalk, crosswalk bridge, compliance gap analysis. Built by MEOK AI Labs."
 license = {file = "LICENSE"}
@@ -25,7 +25,7 @@ Repository = "https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp"
 
 [tool.hatch.build.targets.wheel]
 packages = ["."]
-only-include = ["server.py"]
+only-include = ["server.py", "auth_middleware.py"]
 
 [project.scripts]
 csoai_governance_crosswalk_mcp = "server:main"

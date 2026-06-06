@@ -28,7 +28,14 @@ import sys, os
 
 sys.path.insert(0, os.path.expanduser("~/clawd/meok-labs-engine/shared"))
 from auth_middleware import check_access
-from compliance_neural import ComplianceNeuralNet
+try:
+    from compliance_neural import ComplianceNeuralNet
+except Exception:
+    class ComplianceNeuralNet:
+        def __init__(self, *a, **k): pass
+        def extract_features_from_system(self, **kw): return kw
+        def predict_risk(self, features): return {"note": "Neural scoring requires the full MEOK platform; rule-based tools available.", "neural_available": False}
+        def get_insights(self): return {"note": "Neural insights require the full MEOK platform.", "neural_available": False}
 
 _neural_net = ComplianceNeuralNet("csoai-crosswalk")
 
@@ -2488,6 +2495,29 @@ def _get_article_details(article_id: str) -> Optional[dict]:
 # ============================================================
 
 
+_UPSELL = (
+    "\n\n──────────────────────\n"
+    "⚖️  Part of CSOAI — the open AI-governance standard · by MEOK AI Labs\n"
+    "   • All-access · 300+ governance & compliance MCPs → https://meok.ai/pricing\n"
+    "   • Get this assessment human-signed & audited (£29) → https://meok.ai/work\n"
+    "   • Open standard · transparent crosswalks · a fraction of enterprise-GRC cost\n"
+    "   ⭐ Free & open-source → https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp"
+)
+import functools as _ft, inspect as _isp
+_orig_tool = mcp.tool
+def _tool_with_upsell(*da, **dk):
+    deco = _orig_tool(*da, **dk)
+    def wrap(fn):
+        @_ft.wraps(fn)
+        def inner(*a, **k):
+            r = fn(*a, **k)
+            return (r + _UPSELL) if isinstance(r, str) else r
+        try: inner.__signature__ = _isp.signature(fn)
+        except Exception: pass
+        return deco(inner)
+    return wrap
+mcp.tool = _tool_with_upsell
+
 @mcp.tool()
 def query_crosswalk(
     framework: str, article_or_clause: Optional[str] = None, api_key: str = ""
@@ -2534,7 +2564,7 @@ def query_crosswalk(
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": "https://councilof.ai"}
     if err := _rl():
         return err
     key = _resolve_framework_key(framework)
@@ -2661,7 +2691,7 @@ def crosswalk_bridge(
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": "https://councilof.ai"}
     if err := _rl():
         return err
     key_a = _resolve_framework_key(framework_a)
@@ -2846,7 +2876,7 @@ def compliance_gap_analysis(
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": "https://councilof.ai"}
     if err := _rl():
         return err
     resolved = []
@@ -3015,7 +3045,7 @@ def get_unified_crosswalk(api_key: str = "") -> str:
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": "https://councilof.ai"}
     if err := _rl():
         return err
     lines = [
@@ -3129,7 +3159,7 @@ def search_by_topic(topic: str, api_key: str = "") -> str:
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": "https://councilof.ai"}
     if err := _rl():
         return err
     topic_lower = topic.lower().strip()
@@ -3262,7 +3292,7 @@ def list_frameworks(api_key: str = "") -> str:
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": "https://councilof.ai"}
     if err := _rl():
         return err
     lines = [
@@ -3351,7 +3381,7 @@ def generate_compliance_report(
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": "https://councilof.ai"}
     if err := _rl():
         return err
     org_size = (organization_size or "sme").lower()
@@ -3635,7 +3665,7 @@ def get_partnership_charter(api_key: str = "") -> str:
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": "https://councilof.ai"}
     if err := _rl():
         return err
     charter = PARTNERSHIP_CHARTER
