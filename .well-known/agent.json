@@ -1,0 +1,131 @@
+{
+  "name": "csoai-governance-crosswalk-mcp",
+  "description": "Csoai Governance Crosswalk MCP Server by MEOK AI Labs",
+  "url": "https://proofof.ai/scorecard/csoai-governance-crosswalk-mcp.html",
+  "version": "1.0.10",
+  "protocolVersion": "0.2.0",
+  "provider": {
+    "organization": "MEOK AI Labs",
+    "url": "https://meok.ai"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": [
+    "text"
+  ],
+  "defaultOutputModes": [
+    "text"
+  ],
+  "skills": [
+    {
+      "id": "query_crosswalk",
+      "name": "Query Crosswalk",
+      "description": "query_crosswalk via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "crosswalk_bridge",
+      "name": "Crosswalk Bridge",
+      "description": "crosswalk_bridge via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "compliance_gap_analysis",
+      "name": "Compliance Gap Analysis",
+      "description": "compliance_gap_analysis via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "get_unified_crosswalk",
+      "name": "Get Unified Crosswalk",
+      "description": "get_unified_crosswalk via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "search_by_topic",
+      "name": "Search By Topic",
+      "description": "search_by_topic via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "list_frameworks",
+      "name": "List Frameworks",
+      "description": "list_frameworks via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "generate_compliance_report",
+      "name": "Generate Compliance Report",
+      "description": "generate_compliance_report via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "get_partnership_charter",
+      "name": "Get Partnership Charter",
+      "description": "get_partnership_charter via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "predict_risk_neural",
+      "name": "Predict Risk Neural",
+      "description": "predict_risk_neural via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "neural_insights",
+      "name": "Neural Insights",
+      "description": "neural_insights via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "quick_compare",
+      "name": "Quick Compare",
+      "description": "quick_compare via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "supported_frameworks",
+      "name": "Supported Frameworks",
+      "description": "supported_frameworks via csoai-governance-crosswalk-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    }
+  ]
+}

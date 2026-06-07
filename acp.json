@@ -1,0 +1,30 @@
+{
+  "acpVersion": "0.1",
+  "agent": {
+    "name": "csoai-governance-crosswalk-mcp",
+    "description": "Csoai Governance Crosswalk MCP Server by MEOK AI Labs",
+    "version": "1.0.10",
+    "provider": "MEOK AI Labs",
+    "interfaces": [
+      {
+        "type": "mcp",
+        "transport": "stdio",
+        "package": "csoai-governance-crosswalk-mcp"
+      }
+    ],
+    "capabilities": [
+      "query_crosswalk",
+      "crosswalk_bridge",
+      "compliance_gap_analysis",
+      "get_unified_crosswalk",
+      "search_by_topic",
+      "list_frameworks",
+      "generate_compliance_report",
+      "get_partnership_charter",
+      "predict_risk_neural",
+      "neural_insights",
+      "quick_compare",
+      "supported_frameworks"
+    ]
+  }
+}
