@@ -1,0 +1,10 @@
+{
+  "name": "Governance Crosswalk",
+  "description": "Multi-framework compliance mapping across 15+ standards",
+  "vendor": "MEOK AI Labs",
+  "sourceUrl": "https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp",
+  "homepage": "https://meok.ai/mcp/csoai-governance-crosswalk-mcp",
+  "license": "MIT",
+  "runtime": "python",
+  "entryPoint": "server.py"
+}

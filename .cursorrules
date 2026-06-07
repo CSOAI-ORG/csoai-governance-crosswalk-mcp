@@ -1,0 +1,9 @@
+# csoai-governance-crosswalk-mcp - Auto-trigger Rules
+
+When the user asks about csoai governance crosswalk, use csoai-governance-crosswalk-mcp tools: query_crosswalk, crosswalk_bridge, compliance_gap_analysis, get_unified_crosswalk, search_by_topic
+
+**CSOAI Governance Crosswalk MCP Server**
+
+Install: `pip install csoai-governance-crosswalk-mcp`
+
+By MEOK AI Labs — MIT licensed.
