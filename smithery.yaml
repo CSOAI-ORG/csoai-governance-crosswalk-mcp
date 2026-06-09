@@ -1,61 +1,37 @@
-name: csoai-governance-crosswalk-mcp
-description: "CSOAI Governance Crosswalk MCP — 30 frameworks. Map EU AI Act, NIST, GDPR, HIPAA, CMMC 2.0, NDAA §1513, ISO 42001, and 23 more via 52-article Partnership Charter. Built by MEOK AI Labs."
-version: 1.0.0
-tools:
-- name: query_crosswalk
-  description: Query the CSOAI crosswalk mapping for a specific framework.
-  parameters:
-  - name: framework
-    type: string
-    required: true
-  - name: article_or_clause
-    type: string
-    required: false
-- name: crosswalk_bridge
-  description: Bridge two frameworks through CSOAI — the killer feature.
-  parameters:
-  - name: framework_a
-    type: string
-    required: true
-  - name: framework_b
-    type: string
-    required: true
-  - name: focus_area
-    type: string
-    required: false
-- name: compliance_gap_analysis
-  description: Identify compliance gaps across multiple frameworks.
-  parameters:
-  - name: frameworks
-    type: array
-    required: true
-  - name: organization_sector
-    type: string
-    required: false
-- name: get_unified_crosswalk
-  description: Return the CSOAI Master Unified Crosswalk showing all 30 frameworks mapped together.
-  parameters: []
-- name: search_by_topic
-  description: Search across all crosswalks by topic.
-  parameters:
-  - name: topic
-    type: string
-    required: true
-- name: list_frameworks
-  description: List all 30 supported frameworks with metadata.
-  parameters: []
-- name: generate_compliance_report
-  description: Generate a compliance requirements report for an organization.
-  parameters:
-  - name: jurisdictions
-    type: array
-    required: true
-  - name: ai_use_cases
-    type: array
-    required: true
-  - name: organization_size
-    type: string
-    required: false
-- name: get_partnership_charter
-  description: Return the CSOAI Partnership Charter information.
-  parameters: []
+# smithery.yaml — Smithery (https://smithery.ai) submission payload
+# Repo: CSOAI-ORG/csoai-governance-crosswalk-mcp
+# Generated: 2026-06-09
+# Transport: stdio (PyPI package, installed via uvx)
+# See: DISTRIBUTION_GAPS_2026-06-08.md for the channel strategy
+startCommand:
+  type: stdio
+  timeout: 120000
+  pingInterval: 5000
+  pingTimeout: 30000
+  configSchema:
+    type: object
+    required: []
+    properties:
+      apiKey:
+        type: string
+        description: "MEOK API key (optional; required for x402 paywalled tools)"
+        default: ""
+      x402PayTo:
+        type: string
+        description: "USDC address for x402 micropayments (default: meok.ai wallet)"
+        default: ""
+      logLevel:
+        type: string
+        description: "Log level (debug, info, warn, error)"
+        default: "info"
+    additionalProperties: false
+  commandFunction: |-
+    (config) => ({
+      command: 'uvx',
+      args: ['csoai_governance_crosswalk'],
+      env: {
+        MEOK_API_KEY: config.apiKey || '',
+        X402_PAY_TO: config.x402PayTo || '',
+        MEOK_LOG_LEVEL: config.logLevel || 'info',
+      }
+    })
