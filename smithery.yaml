@@ -1,5 +1,7 @@
 name: csoai-governance-crosswalk-mcp
-description: "CSOAI Governance Crosswalk MCP — 30 frameworks. Map EU AI Act, NIST, GDPR, HIPAA, CMMC 2.0, NDAA §1513, ISO 42001, and 23 more via 52-article Partnership Charter. Built by MEOK AI Labs."
+description: "CSOAI Governance Crosswalk MCP \u2014 30 frameworks. Map EU AI Act,\
+  \ NIST, GDPR, HIPAA, CMMC 2.0, NDAA \xA71513, ISO 42001, and 23 more via 52-article\
+  \ Partnership Charter. Built by MEOK AI Labs."
 version: 1.0.0
 tools:
 - name: query_crosswalk
@@ -12,7 +14,7 @@ tools:
     type: string
     required: false
 - name: crosswalk_bridge
-  description: Bridge two frameworks through CSOAI — the killer feature.
+  description: "Bridge two frameworks through CSOAI \u2014 the killer feature."
   parameters:
   - name: framework_a
     type: string
@@ -33,7 +35,8 @@ tools:
     type: string
     required: false
 - name: get_unified_crosswalk
-  description: Return the CSOAI Master Unified Crosswalk showing all 30 frameworks mapped together.
+  description: Return the CSOAI Master Unified Crosswalk showing all 30 frameworks
+    mapped together.
   parameters: []
 - name: search_by_topic
   description: Search across all crosswalks by topic.
@@ -59,3 +62,16 @@ tools:
 - name: get_partnership_charter
   description: Return the CSOAI Partnership Charter information.
   parameters: []
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: Your MEOK API Key
+  commandFunction: "(config) => ({\n  command: 'uvx',\n  args: ['csoai-governance-crosswalk-mcp',\
+    \ '--api-key', config.apiKey],\n  env: {\n    MEOK_API_KEY: config.apiKey\n  }\n\
+    })"
