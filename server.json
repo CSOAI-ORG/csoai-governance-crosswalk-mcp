@@ -4,9 +4,8 @@
   "version": "1.0.13",
   "description": "Csoai Governance Crosswalk MCP Server by MEOK AI Labs",
   "repository": {
-    "type": "git",
     "url": "https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp",
-    "source": "https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp"
+    "source": "github"
   },
   "packages": [
     {
