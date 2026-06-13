@@ -1,5 +1,10 @@
 # Csoai Governance Crosswalk MCP
 
+<!-- OpenSSF + hygiene badges (auto-inserted by add_openssf_badge.py) -->
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp/badge)](https://scorecard.dev/viewer/?uri=github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp)
+[![License](https://img.shields.io/github/license/CSOAI-ORG/csoai-governance-crosswalk-mcp)](https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp/blob/main/LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/CSOAI-ORG/csoai-governance-crosswalk-mcp)](https://github.com/CSOAI-ORG/csoai-governance-crosswalk-mcp/commits/main)
+
 > **⚖️ Built by [MEOK AI Labs](https://meok.ai) / [CSOAI](https://csoai.org).** Need this applied to _your_ system fast? Book a 30-min Founder Office Hour (£29) → **https://meok.ai/work** · Full governance platform → **https://meok.ai**
 
 [![MEOK AI Labs](https://img.shields.io/badge/MEOK-AI%20Labs-667eea)](https://meok.ai)
