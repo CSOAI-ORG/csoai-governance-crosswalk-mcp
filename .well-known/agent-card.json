@@ -1,0 +1,236 @@
+{
+  "name": "Csoai Governance Crosswalk Mcp",
+  "version": "1.0.10",
+  "url": "https://mcp.meok.ai/csoai-governance-crosswalk-mcp/a2a",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "protocolVersion": "0.3.0",
+  "description": "Csoai Governance Crosswalk MCP server. Tools: query crosswalk, crosswalk bridge, compliance gap analysis. Built by MEOK AI Labs.",
+  "provider": {
+    "organization": "MEOK AI LABS",
+    "url": "https://meok.ai"
+  },
+  "defaultInputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "query_crosswalk",
+      "name": "Query Crosswalk",
+      "description": "Query Crosswalk — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "crosswalk_bridge",
+      "name": "Crosswalk Bridge",
+      "description": "Crosswalk Bridge — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "compliance_gap_analysis",
+      "name": "Compliance Gap Analysis",
+      "description": "Compliance Gap Analysis — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "get_unified_crosswalk",
+      "name": "Get Unified Crosswalk",
+      "description": "Get Unified Crosswalk — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "search_by_topic",
+      "name": "Search By Topic",
+      "description": "Search By Topic — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "list_frameworks",
+      "name": "List Frameworks",
+      "description": "List Frameworks — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "generate_compliance_report",
+      "name": "Generate Compliance Report",
+      "description": "Generate Compliance Report — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "get_partnership_charter",
+      "name": "Get Partnership Charter",
+      "description": "Get Partnership Charter — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "predict_risk_neural",
+      "name": "Predict Risk Neural",
+      "description": "Predict Risk Neural — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "neural_insights",
+      "name": "Neural Insights",
+      "description": "Neural Insights — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "quick_compare",
+      "name": "Quick Compare",
+      "description": "Quick Compare — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    },
+    {
+      "id": "supported_frameworks",
+      "name": "Supported Frameworks",
+      "description": "Supported Frameworks — a tool of the csoai-governance-crosswalk-mcp MCP.",
+      "tags": [
+        "compliance",
+        "governance"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    }
+  ],
+  "documentationUrl": "https://meok.ai",
+  "x-meok": {
+    "mcp_name": "csoai-governance-crosswalk-mcp",
+    "verifier": "https://proofof.ai/verify",
+    "governed_by": "CSOAI 52-article charter"
+  }
+}

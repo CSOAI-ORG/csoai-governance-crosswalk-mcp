@@ -1,3 +1,4 @@
+<<<<<<< 5e92bea4e8679a4f7c547356a1b925825ba22957
 # smithery.yaml — Smithery (https://smithery.ai) submission payload
 # Repo: CSOAI-ORG/csoai-governance-crosswalk-mcp
 # Generated: 2026-06-09
@@ -35,3 +36,82 @@ startCommand:
         MEOK_LOG_LEVEL: config.logLevel || 'info',
       }
     })
+=======
+name: csoai-governance-crosswalk-mcp
+description: "CSOAI Governance Crosswalk MCP \u2014 30 frameworks. Map EU AI Act,\
+  \ NIST, GDPR, HIPAA, CMMC 2.0, NDAA \xA71513, ISO 42001, and 23 more via 52-article\
+  \ Partnership Charter. Built by MEOK AI Labs."
+version: 1.0.0
+tools:
+- name: query_crosswalk
+  description: Query the CSOAI crosswalk mapping for a specific framework.
+  parameters:
+  - name: framework
+    type: string
+    required: true
+  - name: article_or_clause
+    type: string
+    required: false
+- name: crosswalk_bridge
+  description: "Bridge two frameworks through CSOAI \u2014 the killer feature."
+  parameters:
+  - name: framework_a
+    type: string
+    required: true
+  - name: framework_b
+    type: string
+    required: true
+  - name: focus_area
+    type: string
+    required: false
+- name: compliance_gap_analysis
+  description: Identify compliance gaps across multiple frameworks.
+  parameters:
+  - name: frameworks
+    type: array
+    required: true
+  - name: organization_sector
+    type: string
+    required: false
+- name: get_unified_crosswalk
+  description: Return the CSOAI Master Unified Crosswalk showing all 30 frameworks
+    mapped together.
+  parameters: []
+- name: search_by_topic
+  description: Search across all crosswalks by topic.
+  parameters:
+  - name: topic
+    type: string
+    required: true
+- name: list_frameworks
+  description: List all 30 supported frameworks with metadata.
+  parameters: []
+- name: generate_compliance_report
+  description: Generate a compliance requirements report for an organization.
+  parameters:
+  - name: jurisdictions
+    type: array
+    required: true
+  - name: ai_use_cases
+    type: array
+    required: true
+  - name: organization_size
+    type: string
+    required: false
+- name: get_partnership_charter
+  description: Return the CSOAI Partnership Charter information.
+  parameters: []
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+    - apiKey
+    properties:
+      apiKey:
+        type: string
+        description: Your MEOK API Key
+  commandFunction: "(config) => ({\n  command: 'uvx',\n  args: ['csoai-governance-crosswalk-mcp',\
+    \ '--api-key', config.apiKey],\n  env: {\n    MEOK_API_KEY: config.apiKey\n  }\n\
+    })"
+>>>>>>> feat/smither-workflows
